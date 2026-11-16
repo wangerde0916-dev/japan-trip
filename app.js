@@ -1,8 +1,9 @@
 'use strict';
 
 (() => {
-  const DATA = window.TRIP_DATA;
-  if (!DATA || !Array.isArray(DATA.days)) {
+  const DATASETS = { budget: window.TRIP_DATA, plus: window.TRIP_DATA_PLUS };
+  let DATA = DATASETS.budget;
+  if (Object.values(DATASETS).some(data => !data || !Array.isArray(data.days))) {
     document.getElementById('page-itinerary').textContent = '行程数据未加载，请运行 node scripts/build-data.mjs 生成 data.js，并保留完整文件夹。';
     return;
   }
@@ -16,11 +17,14 @@
   const dateLabel = date => `${Number(date.slice(5, 7))}/${Number(date.slice(8, 10))}`;
   const key = (...parts) => JSON.stringify(parts);
   const own = (bag, id) => Object.prototype.hasOwnProperty.call(bag, id) && bag[id] === true;
-  const cityByKey = new Map(DATA.cities.map(city => [city.key, city]));
-  const categoryNames = Object.keys(DATA.budget.perPersonJPY);
-  const blankState = () => ({ completed: {}, mustSee: {}, wanted: {}, eaten: {}, checklist: {}, expenses: [], rate: 150 });
+  const categoryFamily = category => category.replace(/（.*$/, '');
+  const blankState = () => ({ mode: 'budget', completed: {}, mustSee: {}, wanted: {}, eaten: {}, checklist: {}, expenses: [], rate: 150 });
   let storageIssue = '';
+  let needsMigration = false;
   let state = readState();
+  DATA = DATASETS[state.mode];
+  let cityByKey = new Map(DATA.cities.map(city => [city.key, city]));
+  let categoryNames = Object.keys(DATA.budget.perPersonJPY);
   let today = localDate(new Date());
   let selectedDay = getDayIndexForDate(today);
   let currentPage = 'itinerary';
@@ -52,16 +56,25 @@
       if (!raw) return defaults;
       const saved = JSON.parse(raw);
       if (!saved || typeof saved !== 'object' || Array.isArray(saved)) throw new Error('Invalid saved state');
+      defaults.mode = saved.mode === 'plus' ? 'plus' : 'budget';
+      needsMigration = saved.mode !== defaults.mode;
       for (const name of ['completed', 'mustSee', 'wanted', 'eaten', 'checklist']) {
         if (saved[name] && typeof saved[name] === 'object' && !Array.isArray(saved[name])) {
-          defaults[name] = Object.fromEntries(Object.entries(saved[name]).filter(([, value]) => value === true));
+          // Keep the original content IDs; only add the missing version prefix.
+          // One atomic write to the existing storage entry preserves the shared ledger.
+          defaults[name] = Object.fromEntries(Object.entries(saved[name]).filter(([, value]) => value === true).map(([id, value]) => {
+            if (/^(budget|plus):/.test(id)) return [id, value];
+            needsMigration = true;
+            return [`budget:${id}`, value];
+          }));
         }
       }
       if (Number.isFinite(saved.rate) && saved.rate >= 0.01 && saved.rate <= 100000) defaults.rate = saved.rate;
       if (Array.isArray(saved.expenses)) {
         defaults.expenses = saved.expenses.filter(expense => expense && typeof expense.id === 'string'
           && Number.isFinite(expense.amount) && expense.amount > 0 && expense.amount <= 1e9
-          && categoryNames.includes(expense.category) && DATA.days.some(day => day.date === expense.date)
+          && Object.values(DATASETS).some(data => Object.hasOwn(data.budget.perPersonJPY, expense.category))
+          && Object.values(DATASETS).some(data => data.days.some(day => day.date === expense.date))
           && typeof expense.note === 'string');
       }
       return defaults;
@@ -121,10 +134,11 @@
   function progress(done, total, label) {
     return `<div class="completion-line"><span>${label}</span><strong>${done}/${total}</strong></div><div class="progress-track" role="progressbar" aria-label="${label}" aria-valuemin="0" aria-valuemax="${total}" aria-valuenow="${done}"><span class="progress-fill" style="width:${total ? done / total * 100 : 0}%"></span></div>`;
   }
-  const itemKey = (day, item) => key('item', day.date, item.time, item.title);
-  const foodKey = (city, food) => key('food', city.key, food.name);
-  const sightKey = (city, sight) => key('sight', city.key, sight);
-  const checklistKey = item => key('checklist', item.group, item.item);
+  const versionKey = (...parts) => `${state.mode}:${key(...parts)}`;
+  const itemKey = (day, item) => versionKey('item', day.date, item.time, item.title);
+  const foodKey = (city, food) => versionKey('food', city.key, food.name);
+  const sightKey = (city, sight) => versionKey('sight', city.key, sight);
+  const checklistKey = item => versionKey('checklist', item.group, item.item);
 
   function renderItinerary() {
     const day = DATA.days[selectedDay];
@@ -155,7 +169,7 @@
   function foodCard(city, food, closed = false, showCity = false) {
     const id = foodKey(city, food);
     return `<article class="food-card${closed ? ' is-closed' : ''}" data-food-name="${html(food.name)}">
-      ${showCity ? `<span class="city-label">${html(city.name)}</span>` : ''}<div class="food-heading"><h3>${html(food.name)}</h3>${closed ? '<span class="closed-badge">今天休息</span>' : ''}</div>
+      ${showCity ? `<span class="city-label">${html(city.name)}</span>` : ''}<div class="food-heading"><h3>${food.tier === 'plus' ? '<span class="upgrade-badge">升级</span>' : ''}${html(food.name)}</h3>${closed ? '<span class="closed-badge">今天休息</span>' : ''}</div>
       <p class="rating"><span aria-label="评分">★ ${food.rating.toFixed(1)}</span> · ${number(food.reviews)} 条评价</p><p class="dish">${html(food.dish)}</p><div class="food-price"><span class="note">人均</span> ${money(food.priceJPY)}</div>${food.note ? `<p class="note">${html(food.note)}</p>` : ''}<p class="note">休息日：${food.closed?.length ? html(food.closed.join('、')) : '数据未提供'}</p>
       <div class="food-actions"><button type="button" class="state-button${own(state.wanted, id) ? ' is-active' : ''}" data-food-toggle="wanted" data-key="${html(id)}" aria-pressed="${own(state.wanted, id)}" aria-label="想去 ${html(food.name)}">♡ 想去</button><button type="button" class="state-button${own(state.eaten, id) ? ' is-active' : ''}" data-food-toggle="eaten" data-key="${html(id)}" aria-pressed="${own(state.eaten, id)}" aria-label="吃过 ${html(food.name)}">✓ 吃过</button>${mapLink(food.mapQuery)}</div>
     </article>`;
@@ -175,7 +189,7 @@
     $('#page-budget').innerHTML = `${pageHeader('SPEND LESS, SEE MORE', '旅行账本', '按人记账，把每一笔旅途花费留在这里。')}
       <section class="summary-card"><span class="eyebrow">已花总额 · 日元</span><div class="budget-total"><strong class="amount">¥${number(spent)}</strong><span class="usd">${usd(spent)}</span></div><div class="budget-range"><span>每人预算</span><strong>${yenRange(totals)}</strong></div><div class="budget-meter${spent > totals[1] ? ' overspent' : ''}" role="progressbar" aria-label="已用预算，相对于预算上限" aria-valuemin="0" aria-valuemax="${totals[1]}" aria-valuenow="${Math.min(spent, totals[1])}" aria-valuetext="已花 ${spent} 日元，预算下限 ${totals[0]}，上限 ${totals[1]}"><span class="progress-fill" style="width:${Math.min(spent / totals[1] * 100, 100)}%"></span><span class="budget-marker" style="left:${lowerPercent}%" title="预算下限"></span></div><div class="completion-line"><span>下限 ¥${number(totals[0])}</span><span>上限 ¥${number(totals[1])}</span></div><p class="budget-status">${spent > totals[1] ? `超出上限 ¥${number(spent - totals[1])}` : spent >= totals[0] ? `已达到预算下限，距离上限还剩 ¥${number(totals[1] - spent)}` : `距离预算下限还剩 ¥${number(totals[0] - spent)}`}</p></section>
       <div class="exchange-card"><label class="field" for="exchange-rate"><span>美元换算汇率</span><span class="exchange-input"><input id="exchange-rate" type="number" inputmode="decimal" min="0.01" max="100000" step="0.01" value="${state.rate}" required aria-describedby="exchange-hint"><span>日元 = 1 美元</span></span></label><p id="exchange-hint" class="note">手动汇率，用于估算；修改后自动保存。</p></div>
-      <section class="budget-categories"><h2>预算分配</h2>${categoryNames.map(category => { const range = DATA.budget.perPersonJPY[category]; const subtotal = state.expenses.filter(expense => expense.category === category).reduce((sum, expense) => sum + expense.amount, 0); return `<div class="category-row"><h3>${html(category)}</h3><div>${money(range)}</div><p class="note">已花 ¥${number(subtotal)} <span class="usd">${usd(subtotal)}</span></p></div>`; }).join('')}<p class="tips-box">${html(DATA.budget.note)}</p></section>
+      <section class="budget-categories"><h2>预算分配</h2>${categoryNames.map(category => { const range = DATA.budget.perPersonJPY[category]; const subtotal = state.expenses.filter(expense => categoryFamily(expense.category) === categoryFamily(category)).reduce((sum, expense) => sum + expense.amount, 0); return `<div class="category-row"><h3>${html(category)}</h3><div>${money(range)}</div><p class="note">已花 ¥${number(subtotal)} <span class="usd">${usd(subtotal)}</span></p></div>`; }).join('')}<p class="tips-box">${html(DATA.budget.note)}</p></section>
       <section class="expense-form-card"><h2>记一笔</h2><form id="expense-form"><div class="form-grid"><label class="field" for="expense-amount"><span>金额（日元）</span><input id="expense-amount" name="amount" type="number" min="0.01" max="1000000000" step="0.01" inputmode="decimal" placeholder="例如 1,200" required></label><label class="field" for="expense-category"><span>分类</span><select id="expense-category" name="category">${categoryNames.map(category => `<option>${html(category)}</option>`).join('')}</select></label></div><label class="field" for="expense-date"><span>哪一天</span><select id="expense-date" name="date">${DATA.days.map((day, index) => `<option value="${day.date}"${index === selectedDay ? ' selected' : ''}>D${day.day} · ${dateLabel(day.date)} · ${html(day.city)}</option>`).join('')}</select></label><label class="field" for="expense-note"><span>备注 <small>选填</small></span><input id="expense-note" name="note" type="text" maxlength="240" placeholder="例如：浅草的第一碗拉面"></label><button type="submit" class="primary-button">＋ 保存支出</button></form></section>
       <section><div class="section-heading"><h2>支出明细 <small class="note">${state.expenses.length} 笔</small></h2><button type="button" class="text-link" data-action="export-csv"${state.expenses.length ? '' : ' disabled'}>导出 CSV</button></div><div class="expense-list">${state.expenses.length ? [...state.expenses].reverse().map(expense => `<article class="expense-row"><div><h3>${html(expense.note || expense.category)}</h3><p class="note">${dateLabel(expense.date)} · ${html(expense.category)}</p><strong>¥${number(expense.amount)}</strong> <span class="usd">${usd(expense.amount)}</span></div><button type="button" class="icon-button" data-delete-expense="${html(expense.id)}" aria-label="删除支出 ${html(expense.note || expense.category)} ${expense.amount} 日元">${icon('trash')}</button></article>`).join('') : '<div class="empty-state"><span aria-hidden="true">¥</span><h3>旅途的第一笔，从这里开始</h3><p class="note">添加交通、餐饮或住宿支出，会自动汇总。</p></div>'}</div></section>`;
   }
@@ -188,10 +202,33 @@
     $('#page-phrases').innerHTML = `${pageHeader('A LITTLE JAPANESE', '旅途日语', canSpeak ? '点日文听发音，或打开出示模式给对方看。' : '打开出示模式，让对方直接看清日文。')}${DATA.phrases.map((phrase, index) => `<article class="phrase-card"><div class="phrase-zh"><span class="phrase-index">${String(index + 1).padStart(2, '0')}</span><h2>${html(phrase.zh)}</h2></div>${canSpeak ? `<button type="button" class="phrase-speak" data-speak="${index}" aria-label="朗读 ${html(phrase.ja)}"><span class="phrase-ja" lang="ja">${html(phrase.ja)}</span>${icon('sound')}</button>` : `<p class="phrase-ja" lang="ja">${html(phrase.ja)}</p>`}<p class="romaji">${html(phrase.romaji)}</p><div class="phrase-actions"><button type="button" class="secondary-button" data-show-phrase="${index}">${icon('expand')} 出示模式</button></div></article>`).join('')}`;
   }
   function renderInfo() {
-    $('#page-info').innerHTML = `${pageHeader('GOOD TO KNOW', '旅行信息', DATA.meta.title)}<section class="info-card"><h2>这次旅程</h2><dl class="info-list"><dt>出行时间</dt><dd>${DATA.meta.startDate} — ${DATA.meta.endDate}</dd><dt>同行人数</dt><dd>${html(DATA.meta.travelers)}</dd><dt>旅行方式</dt><dd>${html(DATA.meta.style)}</dd><dt>路线</dt><dd>${html(DATA.meta.route.join(' → '))}</dd></dl></section><section class="info-card"><h2>机票与交通</h2><p>${html(DATA.meta.flightsNote)}</p></section><section class="info-card"><h2>费用说明</h2><p>${html(DATA.meta.disclaimer)}</p></section><section class="info-card"><h2>紧急联系</h2><div class="emergency-list">${DATA.emergency.map(contact => `<a class="emergency-link" href="tel:${contact.number.replace(/[^\d+]/g, '')}"><span>${html(contact.name)} ${verify(contact.verify)}</span><strong>${html(contact.number)}</strong></a>`).join('')}</div></section><section class="info-card"><h2>随身与离线</h2><p>行程、记账和勾选都保存在这个浏览器中。地图搜索需要联网，朗读是否可离线取决于设备的日语语音。</p><p id="offline-status" class="note">${location.protocol === 'file:' ? '当前为本地文件模式；保留完整文件夹即可离线查看。' : navigator.serviceWorker?.controller ? '离线资源已就绪，可在此浏览器离线打开。' : '首次联网打开后会准备离线资源。'}</p><p class="note">添加到主屏幕：通过 HTTPS 或 localhost 打开，使用浏览器菜单；iPhone 可在 Safari 分享菜单中选择“添加到主屏幕”。</p></section><section class="info-card"><h2>本地记录</h2><p class="note">重置前可在预算页导出支出。重置只影响本 App。</p><button type="button" class="danger-button" data-action="open-reset">重置所有本地数据</button></section>`;
+    $('#page-info').innerHTML = `${pageHeader('GOOD TO KNOW', '旅行信息', DATA.meta.title)}<section class="info-card"><h2>这次旅程</h2><dl class="info-list"><dt>出行时间</dt><dd>${DATA.meta.startDate} — ${DATA.meta.endDate}</dd><dt>同行人数</dt><dd>${html(DATA.meta.travelers)}</dd><dt>旅行方式</dt><dd>${html(DATA.meta.style)}</dd><dt>路线</dt><dd>${html(DATA.meta.route.join(' → '))}</dd></dl></section><section class="info-card"><h2>机票与交通</h2><p>${html(DATA.meta.flightsNote)}</p></section><section class="info-card"><h2>费用说明</h2><p>${html(DATA.meta.disclaimer)}</p></section><section class="info-card"><h2>紧急联系</h2><div class="emergency-list">${DATA.emergency.map(contact => `<a class="emergency-link" href="tel:${contact.number.replace(/[^\d+]/g, '')}"><span>${html(contact.name)} ${verify(contact.verify)}</span><strong>${html(contact.number)}</strong></a>`).join('')}</div></section><section class="info-card"><h2>随身与离线</h2><p>行程、记账和勾选都保存在这个浏览器中。地图搜索需要联网，朗读是否可离线取决于设备的日语语音。</p><p id="offline-status" class="note">${location.protocol === 'file:' ? '当前为本地文件模式；保留完整文件夹即可离线查看。' : navigator.serviceWorker?.controller ? '离线资源已就绪，可在此浏览器离线打开。' : '首次联网打开后会准备离线资源。'}</p><p class="note">添加到主屏幕：通过 HTTPS 或 localhost 打开，使用浏览器菜单；iPhone 可在 Safari 分享菜单中选择“添加到主屏幕”。</p></section><section class="info-card"><h2>本地记录</h2><p class="note">两个版本的勾选分别保存，支出和汇率共用。重置会清除两个版本的本地记录，请先在预算页导出支出。</p><button type="button" class="danger-button" data-action="open-reset">重置所有本地数据</button></section>`;
   }
   function renderAll() {
     renderItinerary(); renderExplore(); renderBudget(); renderChecklist(); renderPhrases(); renderInfo(); renderStorageWarning();
+    $$('[data-mode]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.mode === state.mode)));
+    document.title = `日本冬日手帖 · ${state.mode === 'plus' ? '舒适版' : '穷游版'}`;
+  }
+  function switchMode(mode) {
+    if (!Object.hasOwn(DATASETS, mode) || mode === state.mode) return;
+    const selectedDate = DATA.days[selectedDay].date;
+    const draft = Object.fromEntries(new FormData($('#expense-form')));
+    state.mode = mode;
+    DATA = DATASETS[mode];
+    cityByKey = new Map(DATA.cities.map(city => [city.key, city]));
+    categoryNames = Object.keys(DATA.budget.perPersonJPY);
+    selectedDay = getDayIndexForDate(selectedDate);
+    if (!cityByKey.has(cityFilter)) cityFilter = 'all';
+    saveState();
+    renderAll();
+    // Both itineraries describe the same trip: keep an unfinished ledger entry too.
+    for (const [name, value] of Object.entries(draft)) {
+      $('#expense-form').elements.namedItem(name).value = name === 'category'
+        ? categoryNames.find(category => categoryFamily(category) === categoryFamily(value)) || categoryNames[0]
+        : value;
+    }
+    if (currentPage === 'itinerary') requestAnimationFrame(scrollSelectedDay);
+    toast(`已切换到${mode === 'plus' ? '舒适版' : '穷游版'}`);
   }
   function scrollSelectedDay() {
     const strip = $('.date-strip');
@@ -245,6 +282,7 @@
   document.addEventListener('click', event => {
     const button = event.target.closest('button');
     if (!button) return;
+    if (button.dataset.mode) { switchMode(button.dataset.mode); return; }
     if (button.dataset.page) { navigate(button.dataset.page); return; }
     if (button.dataset.day !== undefined) {
       selectedDay = Number(button.dataset.day);
@@ -301,7 +339,7 @@
       case 'export-csv': exportCSV(); break;
       case 'open-reset': openDialog('reset-dialog'); break;
       case 'confirm-reset':
-        state = blankState(); saveState(); closeDialog('reset-dialog'); renderAll(); toast('已重置本 App 的本地记录'); break;
+        state = { ...blankState(), mode: state.mode }; saveState(); closeDialog('reset-dialog'); renderAll(); toast('已重置本 App 的本地记录'); break;
     }
   });
   document.addEventListener('change', event => {
@@ -343,6 +381,7 @@
   // Read-only helpers support repeatable data and date checks without changing the itinerary.
   window.TripApp = Object.freeze({ getDayIndexForDate, budgetTotals, nearbyFoodForDay, localDate, yenRange });
   $$('[data-icon]').forEach(element => { element.innerHTML = icon(element.dataset.icon); });
+  if (needsMigration) saveState();
   renderAll();
   requestAnimationFrame(scrollSelectedDay);
   if ('serviceWorker' in navigator && (location.protocol === 'https:' || (location.protocol === 'http:' && ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname)))) {

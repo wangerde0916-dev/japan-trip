@@ -1,14 +1,15 @@
 'use strict';
 
-// Increase this version whenever a deployed asset or trip-data.json changes.
+// Increase this version whenever a deployed asset or either trip dataset changes.
 const CACHE_PREFIX = 'japan-winter-trip-';
-const CACHE_NAME = `${CACHE_PREFIX}v3`;
+const CACHE_NAME = `${CACHE_PREFIX}v4`;
 const ASSETS = [
   './index.html',
   './styles.css',
   './app.js',
   './data.js',
   './trip-data.json',
+  './trip-data-plus.json',
   './route-map.svg',
   './manifest.json',
   './sw.js',

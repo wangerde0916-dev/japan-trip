@@ -12,6 +12,7 @@ const [jsonText, generated, source, markup] = await Promise.all([
   read('trip-data.json'), read('data.js'), read('app.js'), read('index.html')
 ]);
 const data = JSON.parse(jsonText);
+const plusData = JSON.parse(await read('trip-data-plus.json'));
 const storageKey = 'japan-winter-trip:v1';
 const pages = ['itinerary', 'explore', 'budget', 'checklist', 'phrases', 'info'];
 const plain = value => JSON.parse(JSON.stringify(value));
@@ -22,7 +23,7 @@ async function check(name, run) {
   catch (error) { failed++; console.error(`FAIL ${name}\n  ${error.stack || error}`); }
 }
 
-function boot({ saved, date = [2026, 10, 16, 12], storageDenied = false, protocol = 'file:', hostname = '' } = {}) {
+function boot({ saved, date = [2026, 10, 16, 12], storageDenied = false, writeDenied = false, protocol = 'file:', hostname = '' } = {}) {
   const elements = new Map();
   const listeners = new Map();
   const windowListeners = new Map();
@@ -70,7 +71,7 @@ function boot({ saved, date = [2026, 10, 16, 12], storageDenied = false, protoco
     navigator: { serviceWorker: { register: async url => { registrations.push(url); return {}; }, ready: Promise.resolve({}) } },
     localStorage: {
       getItem: name => { if (storageDenied) throw new Error('Storage denied'); return local.get(name) ?? null; },
-      setItem: (name, value) => { if (storageDenied) throw new Error('Storage denied'); local.set(name, value); }
+      setItem: (name, value) => { if (storageDenied || writeDenied) throw new Error('Storage denied'); local.set(name, value); }
     },
     Blob, URL: URLStub, FormData: FormDataStub, crypto: { randomUUID },
     setTimeout: () => 1, clearTimeout() {}, setInterval: () => 1,
@@ -93,6 +94,7 @@ function boot({ saved, date = [2026, 10, 16, 12], storageDenied = false, protoco
 await check('generated data is structurally identical to trip-data.json', () => {
   const context = { window: {} }; vm.runInNewContext(generated, context);
   assert.deepEqual(plain(context.window.TRIP_DATA), data);
+  assert.deepEqual(plain(context.window.TRIP_DATA_PLUS), plusData);
 });
 
 await check('file mode initializes all six pages without fetch or SW registration', () => {
@@ -163,7 +165,7 @@ await check('saved checks, rate and valid expenses restore; invalid expenses are
 await check('check changes persist and restore on a fresh app instance', () => {
   const app = boot();
   const entry = data.checklist[0];
-  const id = JSON.stringify(['checklist', entry.group, entry.item]);
+  const id = 'budget:' + JSON.stringify(['checklist', entry.group, entry.item]);
   const input = app.get('checklist-0');
   input.dataset = { toggle: 'checklist', key: id }; input.checked = true;
   app.change(input);
@@ -244,6 +246,128 @@ await check('HTML and manifest local assets exist and support a project subpath'
   assert.equal(manifest.start_url, './index.html');
   assert.equal(manifest.scope, './');
   for (const icon of manifest.icons) await access(new URL(icon.src, root));
+});
+
+await check('comfort mode rerenders all pages, D5/D13, calculated budget and ordered upgrade labels', () => {
+  const app = boot();
+  app.click({ mode: 'plus' });
+  app.click({ day: '4' });
+  assert.match(app.get('page-itinerary').innerHTML, /住宿区域 · 河口湖湖景温泉旅馆/);
+  app.click({ day: '12' });
+  assert.match(app.get('page-itinerary').innerHTML, /DAY 13 <span>· 定山溪<\/span>/);
+  assert.deepEqual(plain(app.context.TripApp.budgetTotals()), [260000, 395000]);
+  assert.match(app.get('page-budget').innerHTML, /¥260,000–395,000/);
+  assert.match(app.get('page-budget').innerHTML, /aria-valuemax="395000"/);
+  assert.match(app.get('page-info').innerHTML, /舒适版（2 人同住/);
+  for (const entry of plusData.checklist) assert.ok(app.get('page-checklist').innerHTML.includes(entry.item));
+  const explore = app.get('page-explore').innerHTML;
+  assert.equal((explore.match(/class="upgrade-badge"/g) || []).length, plusData.cities.flatMap(city => city.food).filter(food => food.tier === 'plus').length);
+  for (const city of plusData.cities) {
+    const positions = city.food.map(food => explore.indexOf(`data-food-name="${food.name}"`));
+    assert.ok(positions.every((position, index) => position >= 0 && (!index || position > positions[index - 1])));
+  }
+  app.click({ mode: 'budget' });
+  assert.doesNotMatch(app.get('page-explore').innerHTML, /class="upgrade-badge"/);
+  assert.deepEqual(plain(app.context.TripApp.budgetTotals()), [162000, 234000]);
+  assert.match(app.get('page-info').innerHTML, /青旅/);
+});
+
+await check('all five legacy check maps migrate once and stay isolated across modes and reloads', () => {
+  const firstDay = data.days[0], firstCity = data.cities[0], list = data.checklist[0];
+  const ids = {
+    completed: JSON.stringify(['item', firstDay.date, firstDay.items[0].time, firstDay.items[0].title]),
+    mustSee: JSON.stringify(['sight', firstCity.key, firstCity.mustSee[0]]),
+    wanted: JSON.stringify(['food', firstCity.key, firstCity.food[0].name]),
+    eaten: JSON.stringify(['food', firstCity.key, firstCity.food[0].name]),
+    checklist: JSON.stringify(['checklist', list.group, list.item])
+  };
+  const legacy = Object.fromEntries(Object.entries(ids).map(([name, id]) => [name, { [id]: true }]));
+  legacy.rate = 170;
+  legacy.expenses = [{ id: 'legacy-hotel', amount: 6500, category: Object.keys(data.budget.perPersonJPY)[0], date: firstDay.date, note: '已存住宿' }];
+  const original = JSON.stringify(legacy);
+  const app = boot({ saved: original });
+  for (const [name, id] of Object.entries(ids)) assert.deepEqual(app.saved()[name], { [`budget:${id}`]: true });
+  assert.deepEqual(app.saved().expenses, legacy.expenses);
+  assert.equal(app.saved().rate, 170);
+  app.click({ mode: 'plus' });
+  for (const page of ['itinerary', 'explore', 'checklist']) assert.doesNotMatch(app.get(`page-${page}`).innerHTML, / checked|data-food-toggle="[^"]+"[^>]*aria-pressed="true"/);
+  for (const [name, id] of Object.entries(ids)) {
+    if (['wanted', 'eaten'].includes(name)) app.click({ foodToggle: name, key: `plus:${id}` });
+    else { const input = app.get(`test-${name}`); input.dataset = { toggle: name, key: `plus:${id}` }; input.checked = true; app.change(input); }
+  }
+  const refreshed = boot({ saved: app.local.get(storageKey) });
+  assert.equal(refreshed.context.document.title, '日本冬日手帖 · 舒适版');
+  assert.equal(refreshed.saved().mode, 'plus');
+  for (const [name, id] of Object.entries(ids)) assert.deepEqual(refreshed.saved()[name], { [`budget:${id}`]: true, [`plus:${id}`]: true });
+  refreshed.click({ mode: 'budget' });
+  assert.match(refreshed.get('page-itinerary').innerHTML, /id="item-1-0"[^>]* checked/);
+  assert.match(refreshed.get('page-checklist').innerHTML, /id="checklist-0"[^>]* checked/);
+  const before = refreshed.local.get(storageKey);
+  assert.equal(boot({ saved: before }).local.get(storageKey), before, 'migration must be idempotent');
+  const denied = boot({ saved: original, writeDenied: true });
+  assert.equal(denied.local.get(storageKey), original, 'failed migration leaves original bytes intact');
+  assert.equal(denied.get('storage-warning').hidden, false);
+  assert.match(denied.get('page-itinerary').innerHTML, /id="item-1-0"[^>]* checked/);
+});
+
+await check('ledger, accommodation subtotal, exchange rate and CSV are shared in both directions', async () => {
+  const app = boot();
+  const budgetCategory = Object.keys(data.budget.perPersonJPY)[0];
+  const plusCategory = Object.keys(plusData.budget.perPersonJPY)[0];
+  app.submit({ amount: '6500', category: budgetCategory, date: data.days[0].date, note: '旧住宿' });
+  app.click({ mode: 'plus' });
+  app.submit({ amount: '25000', category: plusCategory, date: data.days[4].date, note: '温泉旅馆' });
+  const rate = app.get('exchange-rate'); rate.value = '175'; app.change(rate);
+  app.click({ mode: 'budget' });
+  const refreshed = boot({ saved: app.local.get(storageKey) });
+  assert.equal(refreshed.saved().expenses.length, 2);
+  assert.equal(refreshed.saved().rate, 175);
+  for (const mode of ['budget', 'plus']) {
+    refreshed.click({ mode });
+    const page = refreshed.get('page-budget').innerHTML;
+    assert.match(page, /class="amount">¥31,500/);
+    assert.match(page, /已花 ¥31,500/);
+    assert.match(page, /aria-valuenow="31500"/);
+    assert.match(page, /value="175"/);
+  }
+  refreshed.click({ action: 'export-csv' });
+  const csv = await refreshed.blobs[0].text();
+  assert.ok(csv.includes(budgetCategory) && csv.includes(plusCategory));
+  refreshed.click({ deleteExpense: refreshed.saved().expenses[1].id });
+  refreshed.click({ mode: 'budget' });
+  assert.equal(refreshed.saved().expenses.length, 1);
+  assert.match(refreshed.get('page-budget').innerHTML, /class="amount">¥6,500/);
+});
+
+await check('switch retains selected day, current page and unsaved expense form', () => {
+  const app = boot();
+  app.click({ day: '4' }); app.click({ page: 'budget' });
+  app.get('expense-form').data = { amount: '888', category: Object.keys(data.budget.perPersonJPY)[0], date: data.days[4].date, note: '草稿' };
+  app.click({ mode: 'plus' });
+  assert.equal(app.get('page-budget').hidden, false);
+  assert.match(app.get('page-itinerary').innerHTML, /DAY 05/);
+  assert.equal(app.get('field-amount').value, '888');
+  assert.equal(app.get('field-note').value, '草稿');
+  assert.equal(app.get('field-category').value, Object.keys(plusData.budget.perPersonJPY)[0]);
+});
+
+await check('confirmed reset clears both modes and shared ledger without losing selected mode', () => {
+  const app = boot({ saved: { mode: 'plus', checklist: { 'budget:test': true, 'plus:test': true }, rate: 190 } });
+  app.click({ action: 'confirm-reset' });
+  assert.equal(app.saved().mode, 'plus');
+  assert.deepEqual(app.saved().checklist, {});
+  assert.deepEqual(app.saved().expenses, []);
+  assert.equal(app.saved().rate, 150);
+  assert.deepEqual(plain(app.context.TripApp.budgetTotals()), [260000, 395000]);
+});
+
+await check('v4 offline cache includes both datasets and all local assets', async () => {
+  const sw = await read('sw.js');
+  const sandbox = { self: { registration: { scope: 'https://example.test/japan-trip/' }, addEventListener() {} }, URL };
+  vm.runInNewContext(sw + '\nglobalThis.cacheName = CACHE_NAME; globalThis.assets = ASSETS;', sandbox);
+  assert.equal(sandbox.cacheName, 'japan-winter-trip-v4');
+  for (const file of ['data.js', 'trip-data.json', 'trip-data-plus.json']) assert.ok(sandbox.assets.includes(`./${file}`));
+  for (const asset of sandbox.assets) await access(new URL(asset, root));
 });
 
 console.log(`\n${passed} passed; ${failed} failed.`);
