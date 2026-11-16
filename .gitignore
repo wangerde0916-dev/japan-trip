@@ -1,0 +1,46 @@
+# Dependencies, build caches, and logs
+node_modules/
+.cache/
+.parcel-cache/
+coverage/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Operating-system and editor files
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Credentials and machine-specific configuration
+.env
+.env.*
+!.env.example
+.git-credentials
+.netrc
+.npmrc
+*.pem
+*.key
+*.p12
+*.pfx
+auth.json
+credentials*.json
+.ssh/
+.aws/
+.codex/
+.agents/
+
+# Existing workspace materials unrelated to the Japan trip app
+/资料/
+
+# Local exports and temporary artifacts
+*.csv
+*.zip
+tmp/
+temp/

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#17334d">
+  <meta name="description" content="日本冬季 14 天穷游随身手帖：行程、美食、预算、清单和实用日语。">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="日本冬日手帖">
+  <title>日本冬日手帖 · 14 天穷游</title>
+  <link rel="icon" type="image/svg+xml" href="./icons/icon.svg">
+  <link rel="apple-touch-icon" href="./icons/icon-192.png">
+  <link id="app-manifest" rel="manifest">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./data.js" defer></script>
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M4 7c8 2 16 2 24 0M6 12h20M10 10v17m12-17v17M8 19h16M16 9v10" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+        <div><span class="eyebrow">WINTER IN JAPAN · 2027</span><div class="brand-title">日本冬日手帖</div></div>
+      </div>
+      <span class="header-meta"><span class="status-dot" aria-hidden="true"></span>14 天</span>
+    </header>
+    <p id="storage-warning" class="storage-warning" role="status" hidden></p>
+    <main id="main" tabindex="-1">
+      <section id="page-itinerary" class="page" aria-label="行程"></section>
+      <section id="page-explore" class="page" aria-label="美食与打卡" hidden></section>
+      <section id="page-budget" class="page" aria-label="预算" hidden></section>
+      <section id="page-checklist" class="page" aria-label="清单" hidden></section>
+      <section id="page-phrases" class="page" aria-label="日语" hidden></section>
+      <section id="page-info" class="page" aria-label="信息" hidden></section>
+    </main>
+    <nav class="bottom-nav" aria-label="主导航">
+      <button type="button" class="nav-button active" data-page="itinerary" aria-current="page"><span class="nav-icon" data-icon="route"></span><span class="nav-label">行程</span></button>
+      <button type="button" class="nav-button" data-page="explore"><span class="nav-icon" data-icon="food"></span><span class="nav-label">美食打卡</span></button>
+      <button type="button" class="nav-button" data-page="budget"><span class="nav-icon" data-icon="wallet"></span><span class="nav-label">预算</span></button>
+      <button type="button" class="nav-button" data-page="checklist"><span class="nav-icon" data-icon="checklist"></span><span class="nav-label">清单</span></button>
+      <button type="button" class="nav-button" data-page="phrases"><span class="nav-icon" data-icon="speech"></span><span class="nav-label">日语</span></button>
+      <button type="button" class="nav-button" data-page="info"><span class="nav-icon" data-icon="info"></span><span class="nav-label">信息</span></button>
+    </nav>
+  </div>
+  <dialog id="map-dialog" class="map-dialog" aria-labelledby="map-dialog-title">
+    <div class="modal-header"><h2 id="map-dialog-title">14 天路线图</h2><button type="button" class="close-button" data-close="map-dialog" aria-label="关闭路线图">×</button></div>
+    <div class="dialog-actions"><button type="button" class="secondary-button" data-action="map-smaller" aria-label="缩小路线图">− 缩小</button><button type="button" class="secondary-button" data-action="map-larger" aria-label="放大路线图">＋ 放大</button></div>
+    <div class="map-viewport"><img id="large-route-map" src="./route-map.svg" alt="日本 14 天路线：东京、河口湖、京都、奈良、大阪、札幌" width="680" height="590"></div>
+    <p class="note">可左右滑动查看，或使用双指缩放。</p>
+  </dialog>
+  <dialog id="phrase-dialog" class="phrase-dialog" aria-labelledby="display-japanese">
+    <div class="modal-header"><span class="eyebrow">请向对方出示</span><button type="button" class="close-button" data-close="phrase-dialog" aria-label="关闭出示模式">×</button></div>
+    <div class="phrase-display-content"><p id="display-japanese" class="display-japanese" lang="ja"></p><p id="display-translation"></p><p id="display-romaji" class="romaji"></p></div>
+  </dialog>
+  <dialog id="reset-dialog" aria-labelledby="reset-title">
+    <div class="modal-header"><h2 id="reset-title">重置本地数据？</h2><button type="button" class="close-button" data-close="reset-dialog" aria-label="取消重置">×</button></div>
+    <p>将清除本 App 的完成记录、想去与吃过标记、支出和汇率设置。行程内容会保留。建议先在预算页导出账单。</p>
+    <div class="dialog-actions"><button type="button" class="secondary-button" data-close="reset-dialog">取消</button><button type="button" class="danger-button" data-action="confirm-reset">确认重置</button></div>
+  </dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <noscript><p>请启用浏览器 JavaScript，以显示行程和保存勾选记录。</p></noscript>
+</body>
+</html>
