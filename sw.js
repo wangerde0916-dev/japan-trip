@@ -2,7 +2,7 @@
 
 // Increase this version whenever a deployed asset or either trip dataset changes.
 const CACHE_PREFIX = 'japan-winter-trip-';
-const CACHE_NAME = `${CACHE_PREFIX}v4`;
+const CACHE_NAME = `${CACHE_PREFIX}v5`;
 const ASSETS = [
   './index.html',
   './styles.css',
@@ -10,6 +10,7 @@ const ASSETS = [
   './data.js',
   './trip-data.json',
   './trip-data-plus.json',
+  './trip-data-lux.json',
   './route-map.svg',
   './manifest.json',
   './sw.js',

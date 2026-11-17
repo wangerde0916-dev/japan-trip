@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#17334d">
-  <meta name="description" content="日本冬季 14 天随身手帖：穷游版与舒适版行程、美食、预算、清单和实用日语。">
+  <meta name="description" content="日本冬季 14 天随身手帖：穷游、舒适、豪华行程，美食咖啡、多币种账本、清单和实用日语。">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="日本冬日手帖">
@@ -24,8 +24,9 @@
         <div><span class="eyebrow">WINTER IN JAPAN · 2027</span><div class="brand-title">日本冬日手帖</div></div>
       </div>
       <div class="version-switch" role="group" aria-label="选择行程版本">
-        <button type="button" data-mode="budget" aria-pressed="true">穷游版</button>
-        <button type="button" data-mode="plus" aria-pressed="false">舒适版</button>
+        <button type="button" data-mode="budget" aria-pressed="true">穷游</button>
+        <button type="button" data-mode="plus" aria-pressed="false">舒适</button>
+        <button type="button" data-mode="lux" aria-pressed="false">豪华</button>
       </div>
     </header>
     <p id="storage-warning" class="storage-warning" role="status" hidden></p>
@@ -58,7 +59,7 @@
   </dialog>
   <dialog id="reset-dialog" aria-labelledby="reset-title">
     <div class="modal-header"><h2 id="reset-title">重置本地数据？</h2><button type="button" class="close-button" data-close="reset-dialog" aria-label="取消重置">×</button></div>
-    <p>将清除两个版本的完成记录、打卡、想去与吃过标记、清单勾选，以及共用的支出和汇率设置。行程内容会保留。建议先在预算页导出账单。</p>
+    <p>将清除三个版本的完成记录、打卡、想去与吃过标记、清单勾选，以及共用的支出、汇率和显示币种设置。行程内容会保留。建议先在预算页导出账单。</p>
     <div class="dialog-actions"><button type="button" class="secondary-button" data-close="reset-dialog">取消</button><button type="button" class="danger-button" data-action="confirm-reset">确认重置</button></div>
   </dialog>
   <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>

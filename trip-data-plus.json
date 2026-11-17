@@ -3,7 +3,7 @@
     "title": "日本冬季 14 天舒适游：东京 · 富士山 · 京都 · 奈良 · 大阪 · 札幌",
     "startDate": "2027-01-26",
     "endDate": "2027-02-08",
-    "travelers": "1-2 人",
+    "travelers": "2 人（1 人从美国出发、1 人从中国出发，东京会合）",
     "style": "舒适版（2 人同住商务/设计酒店 + 2 晚温泉旅馆，几顿升级正餐）",
     "currency": "JPY",
     "route": [
@@ -14,9 +14,15 @@
       "札幌 3晚",
       "定山溪温泉旅馆 1晚"
     ],
-    "flightsNote": "国际段建议买「多城市/开口」票：美国 → 东京（HND/NRT）去，札幌（CTS）→ 美国回（经东京/首尔/台北转机）。国内段大阪 KIX → 札幌 CTS 乘 Peach 或 Jetstar 廉航。",
+    "flightsNote": "美国出发：去程飞东京，回程从札幌新千岁经东京/首尔/台北转机。中国出发：去程直飞东京，回程从新千岁直飞回国（注意 2027 春节 2/6 前后是高峰）。国内段大阪 KIX → 札幌 CTS。",
     "disclaimer": "价格为估算区间（日元/人，按 2 人同住计；1 人住酒店约 ×1.6）。标记 verify:true 的出发前需在官网核实。",
-    "ratingsNote": "美食评分来自 Google 地图，截取于 2026-11-16，仅供参考；营业时间和休息日出发前再确认。"
+    "ratingsNote": "美食评分来自 Google 地图，截取于 2026-11-16，仅供参考；营业时间和休息日出发前再确认。",
+    "currencyRates": {
+      "jpyPerUsd": 157,
+      "jpyPerCny": 23.2,
+      "asOf": "2026-11-16",
+      "note": "汇率为 2026-11 参考值，App 里可以手动改"
+    }
   },
   "days": [
     {
@@ -1083,6 +1089,41 @@
       "group": "衣物",
       "item": "暖宝宝（日本便利店有卖，叫カイロ）",
       "verify": false
+    },
+    {
+      "group": "中国出发的朋友",
+      "item": "日本单次旅游签证：只能通过日本使领馆指定旅行社办理，个人不能直接递交；单次签最长停留 15 天，14 天行程刚好够。至少提前 1 个月办",
+      "verify": true
+    },
+    {
+      "group": "中国出发的朋友",
+      "item": "签证费 2026-07-01 起单次涨到 ¥15,000（另加旅行社服务费）",
+      "verify": true
+    },
+    {
+      "group": "中国出发的朋友",
+      "item": "机票：去程飞东京（羽田/成田），回程从札幌新千岁直飞回国（北京、上海、广州等有航线）",
+      "verify": false
+    },
+    {
+      "group": "中国出发的朋友",
+      "item": "⚠️ 2027 年春节是 2 月 6 日，2/8 从札幌回国正好是春节高峰，机票会很贵，越早买越好",
+      "verify": true
+    },
+    {
+      "group": "中国出发的朋友",
+      "item": "支付：日本很多店能用支付宝/微信支付，但最好也带一张能在日本用的银联/Visa 卡和一些现金",
+      "verify": false
+    },
+    {
+      "group": "中国出发的朋友",
+      "item": "上网：国内手机号在日本漫游贵，建议买日本 eSIM；国内常用 App 在日本可以正常用",
+      "verify": false
+    },
+    {
+      "group": "中国出发的朋友",
+      "item": "会合：约好 1/26 在东京哪个机场/酒店碰头，两人航班号互相发一下",
+      "verify": false
     }
   ],
   "phrases": [
@@ -1243,6 +1284,188 @@
           "note": "D3 逛涩谷时顺路",
           "mapQuery": "Wagyu Ramen Goku Shibuya"
         }
+      ],
+      "cafes": [
+        {
+          "category": "breakfast",
+          "name": "Cafe Tomorrow 浅草",
+          "rating": 4.3,
+          "reviews": 1497,
+          "dish": "日式早餐定食",
+          "priceJPY": [
+            600,
+            1200
+          ],
+          "note": "6:30 开门，早餐供应到 11:30，二楼位置少",
+          "mapQuery": "Cafe Tomorrow Asakusa",
+          "opens": "06:30"
+        },
+        {
+          "category": "breakfast",
+          "name": "Café Lapin 上野",
+          "rating": 4.6,
+          "reviews": 963,
+          "dish": "厚蛋三明治 + 手冲",
+          "priceJPY": [
+            1200,
+            2000
+          ],
+          "note": "开门前常排队",
+          "mapQuery": "Cafe Lapin Ueno",
+          "closed": [
+            "周日"
+          ],
+          "opens": "08:30"
+        },
+        {
+          "category": "breakfast",
+          "name": "NOOK. Açaí Bowl Cafe",
+          "rating": 4.8,
+          "reviews": 341,
+          "dish": "巴西莓碗、牛油果吐司",
+          "priceJPY": [
+            1500,
+            2500
+          ],
+          "note": "英文流利",
+          "mapQuery": "NOOK Acai Bowl Cafe Asakusa",
+          "opens": "08:00"
+        },
+        {
+          "category": "coffee",
+          "name": "Sedai Coffee and Roasters 原宿",
+          "rating": 4.8,
+          "reviews": 484,
+          "dish": "手冲单品",
+          "priceJPY": [
+            600,
+            1000
+          ],
+          "note": "店很小，只有长凳",
+          "mapQuery": "Sedai Coffee and Roasters"
+        },
+        {
+          "category": "coffee",
+          "name": "FEBRUARY COFFEE ROASTERY 浅草",
+          "rating": 4.7,
+          "reviews": 327,
+          "dish": "瑰夏手冲、焦糖布丁",
+          "priceJPY": [
+            700,
+            1500
+          ],
+          "note": "只有 8 个座位",
+          "mapQuery": "February Coffee Roastery Asakusa",
+          "closed": [
+            "周三"
+          ],
+          "opens": "08:30"
+        },
+        {
+          "category": "coffee",
+          "name": "a little place coffee 浅草",
+          "rating": 4.8,
+          "reviews": 265,
+          "dish": "拿铁、司康",
+          "priceJPY": [
+            600,
+            1200
+          ],
+          "note": "浅草寺北边，安静",
+          "mapQuery": "a little place coffee Asakusa",
+          "opens": "08:00"
+        },
+        {
+          "category": "tea",
+          "name": "幸福堂 Xing Fu Tang 原宿",
+          "rating": 3.9,
+          "reviews": 540,
+          "dish": "黑糖珍珠鲜奶",
+          "priceJPY": [
+            600,
+            900
+          ],
+          "note": "偏甜，不能调甜度",
+          "mapQuery": "Xing Fu Tang Harajuku"
+        },
+        {
+          "category": "tea",
+          "name": "KOI Thé 原宿",
+          "rating": 4.3,
+          "reviews": 162,
+          "dish": "黄金珍珠奶茶",
+          "priceJPY": [
+            500,
+            800
+          ],
+          "note": "以外带为主",
+          "mapQuery": "KOI The Harajuku"
+        },
+        {
+          "category": "cake",
+          "name": "Quil Fait Bon 银座",
+          "rating": 4.2,
+          "reviews": 1907,
+          "dish": "季节水果挞",
+          "priceJPY": [
+            900,
+            3000
+          ],
+          "note": "地下一层可以堂食",
+          "mapQuery": "Quil Fait Bon Ginza"
+        },
+        {
+          "category": "cake",
+          "name": "Henri Charpentier 银座本店",
+          "rating": 4.2,
+          "reviews": 1018,
+          "dish": "现做火焰可丽饼",
+          "priceJPY": [
+            1500,
+            3000
+          ],
+          "note": "常排队",
+          "mapQuery": "Henri Charpentier Ginza"
+        },
+        {
+          "category": "afternoon",
+          "name": "The Palace Lounge（皇宫酒店）",
+          "rating": 4.4,
+          "reviews": 477,
+          "dish": "栗子蒙布朗 + 茶",
+          "priceJPY": [
+            3000,
+            8000
+          ],
+          "note": "蛋糕套餐约 ¥3,000，下午茶要预约",
+          "mapQuery": "The Palace Lounge Tokyo"
+        },
+        {
+          "category": "afternoon",
+          "name": "Louange Tokyo Le Musée 银座",
+          "rating": 4.2,
+          "reviews": 519,
+          "dish": "艺术品造型下午茶",
+          "priceJPY": [
+            3500,
+            8000
+          ],
+          "note": "建议预约",
+          "mapQuery": "Louange Tokyo Le Musee"
+        },
+        {
+          "category": "afternoon",
+          "name": "The Bvlgari Lounge（宝格丽酒店 40 楼）",
+          "rating": 4.6,
+          "reviews": 120,
+          "dish": "宝格丽下午茶",
+          "priceJPY": [
+            10000,
+            15000
+          ],
+          "note": "东京站旁，必须预约",
+          "mapQuery": "Bvlgari Lounge Tokyo"
+        }
       ]
     },
     {
@@ -1320,6 +1543,71 @@
           ],
           "note": "中午不休息，平板排号",
           "mapQuery": "Hotokura Funari Kawaguchiko"
+        }
+      ],
+      "cafes": [
+        {
+          "category": "breakfast",
+          "name": "Kodachi Cafe",
+          "rating": 4.9,
+          "reviews": 349,
+          "dish": "吐司套餐、舒芙蕾松饼",
+          "priceJPY": [
+            1000,
+            2000
+          ],
+          "note": "窗口能看到富士山；常规周二、周三休息",
+          "mapQuery": "Kodachi Cafe Kawaguchiko",
+          "closed": [
+            "周二",
+            "周三"
+          ],
+          "opens": "07:00"
+        },
+        {
+          "category": "breakfast",
+          "name": "CAFETINO MT.FUJI",
+          "rating": 4.8,
+          "reviews": 775,
+          "dish": "厚松饼、燕麦拿铁",
+          "priceJPY": [
+            1200,
+            2000
+          ],
+          "note": "周五、周六休息，D6 周日早上可以去",
+          "mapQuery": "Cafetino Mt Fuji",
+          "closed": [
+            "周五",
+            "周六"
+          ],
+          "opens": "08:30"
+        },
+        {
+          "category": "breakfast",
+          "name": "enico.cafe&bar",
+          "rating": 4.4,
+          "reviews": 371,
+          "dish": "华夫饼、班尼迪克蛋",
+          "priceJPY": [
+            1200,
+            2200
+          ],
+          "note": "7:00 开门，屋顶能看富士山，离河口湖站近",
+          "mapQuery": "enico cafe Kawaguchiko",
+          "opens": "07:00"
+        },
+        {
+          "category": "coffee",
+          "name": "Fuji Cafe CUP'S",
+          "rating": 4.8,
+          "reviews": 2394,
+          "dish": "拿铁 + 富士山正面景观",
+          "priceJPY": [
+            600,
+            1500
+          ],
+          "note": "人多时出餐很慢",
+          "mapQuery": "Fuji Cafe CUPS Kawaguchiko"
         }
       ]
     },
@@ -1413,6 +1701,132 @@
           "note": "只营业晚上，可点半份，建议预约",
           "mapQuery": "Nakashimaya Kyoto"
         }
+      ],
+      "cafes": [
+        {
+          "category": "breakfast",
+          "name": "朝食 喜心 Kishin（祇园）",
+          "rating": 4.3,
+          "reviews": 460,
+          "dish": "日式朝食套餐",
+          "priceJPY": [
+            3600,
+            4500
+          ],
+          "note": "固定场次，建议预约",
+          "mapQuery": "Choshoku Kishin Kyoto",
+          "closed": [
+            "周三",
+            "周四"
+          ],
+          "opens": "07:30"
+        },
+        {
+          "category": "breakfast",
+          "name": "M&Maison 京都",
+          "rating": 4.6,
+          "reviews": 2616,
+          "dish": "烤鱼和风早餐",
+          "priceJPY": [
+            2000,
+            3000
+          ],
+          "note": "京都站附近",
+          "mapQuery": "M&Maison Kyoto",
+          "opens": "08:00"
+        },
+        {
+          "category": "breakfast",
+          "name": "Kacto（鸭川边）",
+          "rating": 4.5,
+          "reviews": 1494,
+          "dish": "松饼、鸡蛋金枪鱼三明治",
+          "priceJPY": [
+            1500,
+            2500
+          ],
+          "note": "鸭川河景，热门要等位",
+          "mapQuery": "Kacto Kyoto",
+          "opens": "08:00"
+        },
+        {
+          "category": "tea",
+          "name": "茶寮都路里 祇园本店",
+          "rating": 4.4,
+          "reviews": 2792,
+          "dish": "抹茶芭菲",
+          "priceJPY": [
+            1200,
+            2000
+          ],
+          "note": "老牌抹茶甜品",
+          "mapQuery": "Saryo Tsujiri Gion"
+        },
+        {
+          "category": "tea",
+          "name": "Maccha House 抹茶館 清水",
+          "rating": 4.3,
+          "reviews": 1145,
+          "dish": "抹茶提拉米苏",
+          "priceJPY": [
+            800,
+            1500
+          ],
+          "note": "每人至少点一份",
+          "mapQuery": "Maccha House Kiyomizu"
+        },
+        {
+          "category": "tea",
+          "name": "GOKAGO（清水寺附近）",
+          "rating": 4.5,
+          "reviews": 1045,
+          "dish": "浓厚宇治抹茶拿铁",
+          "priceJPY": [
+            800,
+            1300
+          ],
+          "note": "现场点茶，排队较快",
+          "mapQuery": "GOKAGO Kyoto"
+        },
+        {
+          "category": "coffee",
+          "name": "% ARABICA 岚山",
+          "rating": 4.2,
+          "reviews": 5843,
+          "dish": "拿铁 + 渡月桥河景",
+          "priceJPY": [
+            600,
+            900
+          ],
+          "note": "开门前就排队，基本只能外带",
+          "mapQuery": "Arabica Kyoto Arashiyama"
+        },
+        {
+          "category": "coffee",
+          "name": "eXcafe 京都岚山本店",
+          "rating": 4.6,
+          "reviews": 5099,
+          "dish": "自己烤团子套餐",
+          "priceJPY": [
+            1500,
+            2500
+          ],
+          "note": "庭院老宅",
+          "mapQuery": "eXcafe Kyoto Arashiyama"
+        },
+        {
+          "category": "afternoon",
+          "name": "FAUCHON Salon de Thé Kyoto",
+          "rating": 4.8,
+          "reviews": 208,
+          "dish": "季节主题下午茶",
+          "priceJPY": [
+            7000,
+            7500
+          ],
+          "note": "FAUCHON 酒店 10 楼，必须预约",
+          "mapQuery": "Fauchon Salon de The Kyoto"
+        }
       ]
     },
     {
@@ -1463,6 +1877,70 @@
           "closed": [
             "周二",
             "周三"
+          ]
+        }
+      ],
+      "cafes": [
+        {
+          "category": "breakfast",
+          "name": "CHAMI Specialty Coffee",
+          "rating": 4.7,
+          "reviews": 1845,
+          "dish": "咖啡 + 法式布丁挞",
+          "priceJPY": [
+            800,
+            2000
+          ],
+          "note": "7:30 开门，近铁奈良站附近",
+          "mapQuery": "CHAMI Coffee Nara",
+          "opens": "07:30"
+        },
+        {
+          "category": "coffee",
+          "name": "Conce（奈良公园旁二楼）",
+          "rating": 4.8,
+          "reviews": 1323,
+          "dish": "抹茶拿铁、甜点",
+          "priceJPY": [
+            800,
+            2000
+          ],
+          "note": "窗边能看鹿",
+          "mapQuery": "Conce Nara",
+          "closed": [
+            "周二"
+          ]
+        },
+        {
+          "category": "cake",
+          "name": "Cafe Wakakusa",
+          "rating": 4.5,
+          "reviews": 341,
+          "dish": "水果可丽饼",
+          "priceJPY": [
+            1000,
+            1800
+          ],
+          "note": "老板很热情",
+          "mapQuery": "Cafe Wakakusa Nara",
+          "closed": [
+            "周一"
+          ]
+        },
+        {
+          "category": "cake",
+          "name": "ほうせき箱",
+          "rating": 4.3,
+          "reviews": 1401,
+          "dish": "抹茶开心果刨冰",
+          "priceJPY": [
+            1500,
+            2000
+          ],
+          "note": "只收现金；冬天也有刨冰",
+          "mapQuery": "Hosekibako Nara",
+          "closed": [
+            "周四"
           ]
         }
       ]
@@ -1553,6 +2031,105 @@
           ],
           "note": "顺路看通天阁",
           "mapQuery": "Shinsekai Kushikatsu Ittoku"
+        }
+      ],
+      "cafes": [
+        {
+          "category": "breakfast",
+          "name": "UNREAL（道顿堀河边）",
+          "rating": 4.8,
+          "reviews": 1585,
+          "dish": "美式早餐、法式火腿芝士三明治",
+          "priceJPY": [
+            1500,
+            2500
+          ],
+          "note": "线上排队",
+          "mapQuery": "UNREAL Osaka",
+          "opens": "08:00"
+        },
+        {
+          "category": "breakfast",
+          "name": "Heumoot Cafe 难波",
+          "rating": 4.8,
+          "reviews": 549,
+          "dish": "早午餐、彩虹拉花",
+          "priceJPY": [
+            1500,
+            2500
+          ],
+          "note": "进店在名单上登记",
+          "mapQuery": "Heumoot Cafe Namba",
+          "opens": "08:00"
+        },
+        {
+          "category": "breakfast",
+          "name": "MAZE CAFE 难波",
+          "rating": 4.6,
+          "reviews": 630,
+          "dish": "班尼迪克蛋",
+          "priceJPY": [
+            1500,
+            2200
+          ],
+          "note": "7:00 开门，店小",
+          "mapQuery": "Maze Cafe Namba",
+          "opens": "07:00"
+        },
+        {
+          "category": "coffee",
+          "name": "LiLo Coffee Roasters",
+          "rating": 4.8,
+          "reviews": 2556,
+          "dish": "手冲（可选烘焙度）",
+          "priceJPY": [
+            600,
+            1200
+          ],
+          "note": "美国村边，店小",
+          "mapQuery": "LiLo Coffee Roasters"
+        },
+        {
+          "category": "coffee",
+          "name": "Barista Map Coffee Roasters",
+          "rating": 4.7,
+          "reviews": 570,
+          "dish": "草莓风味手冲",
+          "priceJPY": [
+            600,
+            1000
+          ],
+          "note": "",
+          "mapQuery": "Barista Map Coffee Osaka",
+          "closed": [
+            "周一"
+          ]
+        },
+        {
+          "category": "cake",
+          "name": "りくろーおじさんの店 难波本店",
+          "rating": 4.2,
+          "reviews": 5653,
+          "dish": "现烤日式芝士蛋糕（整个）",
+          "priceJPY": [
+            1000,
+            1300
+          ],
+          "note": "只卖整个，排队但很快",
+          "mapQuery": "Rikuro Namba"
+        },
+        {
+          "category": "cake",
+          "name": "PABLO 心斋桥",
+          "rating": 4.3,
+          "reviews": 1640,
+          "dish": "半熟芝士挞",
+          "priceJPY": [
+            300,
+            1500
+          ],
+          "note": "",
+          "mapQuery": "Cheese Tart Pablo Shinsaibashi"
         }
       ]
     },
@@ -1684,6 +2261,76 @@
           "note": "旁边还有一家分店，哪边人少去哪边",
           "mapQuery": "Masajin Susukino"
         }
+      ],
+      "cafes": [
+        {
+          "category": "breakfast",
+          "name": "NODE（KOKO HOTEL 1F）",
+          "rating": 4.6,
+          "reviews": 479,
+          "dish": "热三明治 + 手冲",
+          "priceJPY": [
+            1000,
+            1800
+          ],
+          "note": "8:00 开门",
+          "mapQuery": "NODE Sapporo",
+          "opens": "08:00"
+        },
+        {
+          "category": "coffee",
+          "name": "Mermaid Coffee Roasters",
+          "rating": 4.8,
+          "reviews": 1699,
+          "dish": "美瑛泽西牛奶拿铁",
+          "priceJPY": [
+            600,
+            1200
+          ],
+          "note": "有免费试饮",
+          "mapQuery": "Mermaid Coffee Roasters Sapporo",
+          "opens": "08:00"
+        },
+        {
+          "category": "coffee",
+          "name": "MARUMI COFFEE STAND",
+          "rating": 4.7,
+          "reviews": 524,
+          "dish": "北海道牛奶冰淇淋 + 手冲",
+          "priceJPY": [
+            500,
+            1000
+          ],
+          "note": "地下通道里，下雪天不用出门",
+          "mapQuery": "Marumi Coffee Stand Sitatte Sapporo",
+          "opens": "07:30"
+        },
+        {
+          "category": "cake",
+          "name": "パフェ、珈琲、酒、佐藤",
+          "rating": 4.2,
+          "reviews": 1967,
+          "dish": "夜芭菲（シメパフェ）",
+          "priceJPY": [
+            1500,
+            2500
+          ],
+          "note": "札幌特色：晚饭后吃芭菲；晚上排队",
+          "mapQuery": "Parfait coffee liquor Sato Sapporo"
+        },
+        {
+          "category": "cake",
+          "name": "パフェ専門店 NANAKAMADOU",
+          "rating": 4.3,
+          "reviews": 1065,
+          "dish": "季节芭菲",
+          "priceJPY": [
+            1800,
+            2800
+          ],
+          "note": "18:00 才开门，排队久",
+          "mapQuery": "Nanakamadou Sapporo"
+        }
       ]
     },
     {
@@ -1736,7 +2383,55 @@
           "note": "7:00 开门，只收现金",
           "mapQuery": "Takinami Shokudo Otaru"
         }
+      ],
+      "cafes": [
+        {
+          "category": "cake",
+          "name": "LeTAO 本店",
+          "rating": 4.3,
+          "reviews": 3973,
+          "dish": "双层芝士蛋糕 + 茶",
+          "priceJPY": [
+            1200,
+            2500
+          ],
+          "note": "坐南小樽站下车走过去人少",
+          "mapQuery": "LeTAO Main Store Otaru"
+        },
+        {
+          "category": "cake",
+          "name": "LeTAO PATHOS",
+          "rating": 4.2,
+          "reviews": 2839,
+          "dish": "芝士蛋糕、蛋包饭",
+          "priceJPY": [
+            1200,
+            2500
+          ],
+          "note": "",
+          "mapQuery": "LeTAO Pathos Otaru"
+        },
+        {
+          "category": "cake",
+          "name": "六花亭 小樽运河店",
+          "rating": 4.3,
+          "reviews": 1777,
+          "dish": "葡萄干黄油夹心饼、二楼冰淇淋",
+          "priceJPY": [
+            300,
+            1000
+          ],
+          "note": "伴手礼",
+          "mapQuery": "Rokkatei Otaru"
+        }
       ]
     }
-  ]
+  ],
+  "cafeCategories": {
+    "breakfast": "早餐",
+    "coffee": "咖啡",
+    "tea": "奶茶 / 抹茶",
+    "cake": "蛋糕甜品",
+    "afternoon": "下午茶"
+  }
 }

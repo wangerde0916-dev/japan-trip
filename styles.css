@@ -18,6 +18,8 @@
   --green-soft: #eaf1eb;
   --gold: #84621a;
   --gold-soft: #fff2cf;
+  --lux: #60377b;
+  --lux-soft: #f0e8f6;
   --shadow: 0 6px 24px rgb(24 48 68 / 4%);
   --radius: 18px;
   --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
@@ -60,9 +62,11 @@ button, h1, h2, h3, h4, p, li, label, dd, dt { overflow-wrap: anywhere; }
 .app-header .eyebrow { font-size: 8px; letter-spacing: .06em; }
 .app-header .brand-mark { flex-basis: 28px; width: 28px; height: 36px; }
 .version-switch { display: inline-flex; flex: 0 0 auto; gap: 2px; padding: 3px; border: 1px solid var(--line); border-radius: 13px; background: var(--surface-soft); }
-.version-switch button { min-height: 44px; padding: 6px 8px; border-radius: 9px; color: var(--muted); background: transparent; font-size: 12px; white-space: nowrap; }
+.version-switch button { min-width: 44px; min-height: 44px; padding: 6px 8px; border-radius: 9px; color: var(--muted); background: transparent; font-size: 12px; white-space: nowrap; }
 .version-switch button[aria-pressed="true"] { color: #fff; background: var(--navy); }
 .version-switch button[data-mode="plus"][aria-pressed="true"] { color: var(--gold); background: var(--gold-soft); box-shadow: inset 0 0 0 1px var(--gold); }
+.version-switch button[data-mode="lux"][aria-pressed="true"] { color: var(--lux); background: var(--lux-soft); box-shadow: inset 0 0 0 1px var(--lux); }
+.lux-badge { display: inline-block; flex: 0 0 auto; margin-right: 5px; padding: 2px 7px; border: 1px solid currentColor; border-radius: 5px; color: var(--lux); background: var(--lux-soft); font-size: 10px; font-weight: 650; vertical-align: middle; }
 .upgrade-badge { display: inline-block; flex: 0 0 auto; margin-right: 5px; padding: 2px 7px; border: 1px solid currentColor; border-radius: 5px; color: var(--gold); background: var(--gold-soft); font-size: 10px; font-weight: 650; vertical-align: middle; }
 @media (max-width: 350px) { .app-header .brand-mark { display: none; } }
 .header-meta { display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 5px; min-width: 0; color: var(--muted); font-size: 11px; }
@@ -163,6 +167,10 @@ input[type="checkbox"] { flex: 0 0 18px; width: 18px; height: 18px; margin: 0; a
 .food-card { min-width: 0; padding: 16px; border: 1px solid var(--line); border-radius: 13px; background: var(--surface); }
 .food-heading { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 7px; }
 .food-heading h3, .food-heading h4 { min-width: 0; font-size: 15px; font-weight: 700; }
+.cafe-filters { margin-top: 8px; }
+.cafe-group { margin-top: 18px; }
+.cafe-group > h4 { margin-bottom: 9px; color: var(--muted); font-size: 13px; }
+.opening-time { margin-top: 5px; color: var(--green); font-size: 12px; }
 .food-card .dish { margin-top: 7px; font-size: 13px; }
 .rating { margin-top: 8px; color: var(--gold); font-size: 11px; font-variant-numeric: tabular-nums; }
 .food-price { margin-top: 6px; color: var(--navy); font-size: 12px; font-weight: 650; font-variant-numeric: tabular-nums; }
@@ -207,6 +215,19 @@ input[type="checkbox"] { flex: 0 0 18px; width: 18px; height: 18px; margin: 0; a
 .budget-status { margin-top: 12px; color: var(--muted); font-size: 11px; line-height: 1.8; }
 .amount { font-variant-numeric: tabular-nums; font-weight: 700; }
 .usd { display: inline-block; color: var(--muted); font-size: 11px; font-weight: 400; letter-spacing: 0; font-variant-numeric: tabular-nums; }
+.converted { display: inline-block; max-width: 100%; }
+.budget-range .usd, .budget-limits .usd, .budget-status .usd, .payer-row .usd { display: block; }
+.budget-limits { align-items: flex-start; gap: 12px; }
+.budget-limits > span { min-width: 0; flex: 1; }
+.budget-limits > span:last-child { text-align: right; }
+.currency-display { margin-bottom: 18px; }
+.currency-display h2, .payer-totals h2 { margin-bottom: 10px; font-size: 17px; }
+.currency-options { display: flex; flex-wrap: wrap; gap: 8px; }
+.currency-options button { min-height: 44px; }
+.payer-totals { margin-top: 25px; }
+.payer-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.payer-row h3 { flex: 1; min-width: 0; font-size: 14px; }
+.payer-row > div { min-width: 0; max-width: 65%; text-align: right; }
 .budget-total .usd { display: block; margin-top: 5px; }
 .stat-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line); }
 .stat { min-width: 0; }
@@ -234,6 +255,7 @@ input[type="checkbox"] { flex: 0 0 18px; width: 18px; height: 18px; margin: 0; a
 .summary-card > .note { margin-top: 10px; }
 .exchange-card, .expense-form-card { margin-bottom: 17px; padding: 18px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
 .exchange-card .field { margin-bottom: 0; }
+.exchange-card .field + .field { margin-top: 16px; }
 .exchange-input { display: flex; align-items: center; gap: 11px; }
 .exchange-input > input { flex: 1 1 110px; width: 110px; }
 .exchange-input > span { flex: 0 0 auto; font-size: 12px; font-weight: 400; }
@@ -369,6 +391,7 @@ dialog::backdrop { background: rgb(13 28 41 / 60%); backdrop-filter: blur(4px); 
   .form-grid { gap: 0 9px; }
 }
 @media (prefers-color-scheme: dark) {
+  :root { --lux: #d9b9f0; --lux-soft: #34213f; }
   :root {
     color-scheme: dark;
     --paper: #121d28;

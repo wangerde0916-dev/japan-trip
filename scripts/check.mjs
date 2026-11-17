@@ -13,6 +13,7 @@ const [jsonText, generated, source, markup] = await Promise.all([
 ]);
 const data = JSON.parse(jsonText);
 const plusData = JSON.parse(await read('trip-data-plus.json'));
+const luxData = JSON.parse(await read('trip-data-lux.json'));
 const storageKey = 'japan-winter-trip:v1';
 const pages = ['itinerary', 'explore', 'budget', 'checklist', 'phrases', 'info'];
 const plain = value => JSON.parse(JSON.stringify(value));
@@ -95,6 +96,7 @@ await check('generated data is structurally identical to trip-data.json', () => 
   const context = { window: {} }; vm.runInNewContext(generated, context);
   assert.deepEqual(plain(context.window.TRIP_DATA), data);
   assert.deepEqual(plain(context.window.TRIP_DATA_PLUS), plusData);
+  assert.deepEqual(plain(context.window.TRIP_DATA_LUX), luxData);
 });
 
 await check('file mode initializes all six pages without fetch or SW registration', () => {
@@ -211,7 +213,7 @@ await check('reset requires the confirmation action and resets only the app stat
   assert.equal(app.saved().rate, 180);
   app.click({ action: 'confirm-reset' });
   assert.equal(app.get('reset-dialog').open, false);
-  assert.equal(app.saved().rate, 150);
+  assert.equal(app.saved().rate, data.meta.currencyRates.jpyPerUsd);
   assert.equal(app.local.get('unrelated-app'), 'keep');
 });
 
@@ -357,17 +359,140 @@ await check('confirmed reset clears both modes and shared ledger without losing 
   assert.equal(app.saved().mode, 'plus');
   assert.deepEqual(app.saved().checklist, {});
   assert.deepEqual(app.saved().expenses, []);
-  assert.equal(app.saved().rate, 150);
+  assert.equal(app.saved().rate, data.meta.currencyRates.jpyPerUsd);
   assert.deepEqual(plain(app.context.TripApp.budgetTotals()), [260000, 395000]);
 });
 
-await check('v4 offline cache includes both datasets and all local assets', async () => {
+await check('v5 offline cache includes all three datasets and local assets', async () => {
   const sw = await read('sw.js');
   const sandbox = { self: { registration: { scope: 'https://example.test/japan-trip/' }, addEventListener() {} }, URL };
   vm.runInNewContext(sw + '\nglobalThis.cacheName = CACHE_NAME; globalThis.assets = ASSETS;', sandbox);
-  assert.equal(sandbox.cacheName, 'japan-winter-trip-v4');
-  for (const file of ['data.js', 'trip-data.json', 'trip-data-plus.json']) assert.ok(sandbox.assets.includes(`./${file}`));
+  assert.equal(sandbox.cacheName, 'japan-winter-trip-v5');
+  for (const file of ['data.js', 'trip-data.json', 'trip-data-plus.json', 'trip-data-lux.json']) assert.ok(sandbox.assets.includes(`./${file}`));
   for (const asset of sandbox.assets) await access(new URL(asset, root));
+});
+
+await check('all three budgets are calculated; luxury stays, tags and refresh selection are correct', () => {
+  const app = boot();
+  for (const [mode, expected] of [['budget', [162000,234000]], ['plus',[260000,395000]], ['lux',[790000,1430000]]]) {
+    app.click({mode});
+    assert.deepEqual(plain(app.context.TripApp.budgetTotals()), expected);
+    assert.match(app.get('page-budget').innerHTML, new RegExp(`aria-valuemax="${expected[1]}"`));
+  }
+  app.click({day:'4'}); assert.match(app.get('page-itinerary').innerHTML, /住宿区域 · ふふ 河口湖/);
+  app.click({day:'12'}); assert.match(app.get('page-itinerary').innerHTML, /住宿区域 · 奥定山溪温泉 佳松御苑/);
+  const expectedTags = luxData.cities.flatMap(city=>city.food).filter(food=>food.tier==='lux').length;
+  assert.equal((app.get('page-explore').innerHTML.match(/class="lux-badge"/g)||[]).length,expectedTags);
+  assert.equal(boot({saved:app.local.get(storageKey)}).context.document.title,'日本冬日手帖 · 豪华版');
+  assert.ok(app.get('page-info').innerHTML.includes(luxData.meta.travelers));
+  assert.ok(app.get('page-info').innerHTML.includes(luxData.meta.flightsNote));
+  assert.match(app.get('page-checklist').innerHTML,/中国出发的朋友/);
+});
+
+await check('D5 cafes show opening hours and Saturday CAFETINO is closed last in every mode', () => {
+  const app = boot();
+  for (const mode of ['budget','plus','lux']) {
+    app.click({mode}); app.click({day:'4'});
+    const cafes = app.context.TripApp.nearbyCafesForDay(data.days[4]);
+    assert.equal(cafes.length,4);
+    assert.equal(cafes.at(-1).food.name,'CAFETINO MT.FUJI'); assert.equal(cafes.at(-1).closed,true);
+    assert.ok(cafes.slice(0,-1).every(entry=>!entry.closed));
+    const section = app.get('page-itinerary').innerHTML.split('class="food-list nearby-cafes"')[1];
+    assert.match(section,/food-card is-closed[^>]*data-food-name="CAFETINO MT.FUJI"/);
+    assert.match(section,/今天休息/); assert.match(section,/7:00 开门/); assert.match(section,/8:30 开门/);
+  }
+});
+
+await check('city and cafe category filters show exactly 3 Tokyo afternoon venues; all restores meals', () => {
+  const app = boot();
+  app.click({filter:'tokyo'}); app.click({cafeFilter:'afternoon'});
+  const page = app.get('page-explore').innerHTML;
+  assert.equal((page.match(/data-cafe-category="afternoon"/g)||[]).length,3);
+  assert.equal((page.match(/data-food-name=/g)||[]).length,3);
+  assert.doesNotMatch(page,/data-city-section="kyoto"/);
+  app.click({filter:'otaru'});
+  assert.match(app.get('page-explore').innerHTML,/这个城市暂无该分类/);
+  app.click({cafeFilter:'all'});
+  assert.match(app.get('page-explore').innerHTML,/美食推荐/);
+  assert.match(app.get('page-explore').innerHTML,/data-cafe-group="cake"/);
+});
+
+await check('existing two-mode checks and ledger remain intact; cafe marks are isolated in all three', () => {
+  const saved = {mode:'plus',rate:150,expenses:[{id:'old',amount:6500,category:Object.keys(plusData.budget.perPersonJPY)[0],date:data.days[0].date,note:'原账本'}]};
+  for (const group of ['completed','mustSee','wanted','eaten','checklist']) saved[group]={'budget:legacy':true,'plus:legacy':true};
+  const app = boot({saved});
+  const cafe = data.cities[0].cafes[0];
+  const id = JSON.stringify(['food','tokyo',cafe.name]);
+  for (const mode of ['budget','plus','lux']) {
+    app.click({mode});
+    for (const group of ['wanted','eaten']) app.click({foodToggle:group,key:`${mode}:${id}`});
+  }
+  const refreshed = boot({saved:app.local.get(storageKey)});
+  assert.deepEqual(refreshed.saved().expenses,saved.expenses);
+  assert.equal(refreshed.saved().rate,150);
+  for (const group of ['completed','mustSee','wanted','eaten','checklist']) {
+    assert.equal(refreshed.saved()[group]['budget:legacy'],true);
+    assert.equal(refreshed.saved()[group]['plus:legacy'],true);
+    assert.equal(refreshed.saved()[group]['budget:plus:legacy'],undefined);
+  }
+  for(const mode of ['budget','plus','lux']) assert.equal(refreshed.saved().wanted[`${mode}:${id}`],true);
+  refreshed.click({foodToggle:'wanted',key:`lux:${id}`});
+  assert.equal(refreshed.saved().wanted[`plus:${id}`],true);
+  assert.equal(refreshed.saved().wanted[`budget:${id}`],true);
+  assert.equal(refreshed.saved().wanted[`lux:${id}`],undefined);
+});
+
+await check('new currency defaults come from data; saved USD rate survives; CNY and display persist', () => {
+  const fresh = boot();
+  assert.match(fresh.get('page-budget').innerHTML,/id="exchange-rate"[^>]*value="157"/);
+  assert.match(fresh.get('page-budget').innerHTML,/id="exchange-cny-rate"[^>]*value="23.2"/);
+  const app = boot({saved:{mode:'plus',rate:150}});
+  app.get('expense-form').data={amount:'1200',category:Object.keys(plusData.budget.perPersonJPY)[0],date:data.days[0].date,payer:'小王',note:'保留草稿'};
+  const input = app.get('exchange-cny-rate'); input.value='25'; app.change(input);
+  assert.equal(app.saved().rate,150); assert.equal(app.saved().cnyRate,25);
+  assert.equal(app.get('field-payer').value,'小王');
+  assert.equal(app.get('field-note').value,'保留草稿');
+  assert.match(app.get('page-itinerary').innerHTML,/≈ CN¥28–52/); // D1 transport 700–1300 / 25.
+  assert.match(app.get('page-budget').innerHTML,/≈ CN¥10,400–15,800/);
+  assert.match(app.get('page-explore').innerHTML,/≈ CN¥24–48/); // Cafe Tomorrow 600–1200 / 25.
+  for (const mode of ['budget','plus','lux']) {
+    app.click({mode}); assert.equal(app.saved().rate,150); assert.equal(app.saved().cnyRate,25);
+    for (const currencyDisplay of ['usd','cny','both']) {
+      app.click({currencyDisplay});
+      for (const page of ['itinerary','explore','budget']) {
+        const markup = app.get(`page-${page}`).innerHTML;
+        assert.equal(markup.includes('data-currency="usd"'),currencyDisplay!=='cny');
+        assert.equal(markup.includes('data-currency="cny"'),currencyDisplay!=='usd');
+      }
+    }
+  }
+  app.click({currencyDisplay:'cny'});
+  const refreshed = boot({saved:app.local.get(storageKey)});
+  assert.match(refreshed.get('page-budget').innerHTML,/id="exchange-cny-rate"[^>]*value="25"/);
+  assert.doesNotMatch(refreshed.get('page-explore').innerHTML,/data-currency="usd"/);
+  for(const invalid of ['0','-1','NaN','100001']) { input.value=invalid; app.change(input); assert.equal(app.saved().cnyRate,25); }
+});
+
+await check('payer totals include old unnamed entries, escape names and survive modes, reload and CSV', async () => {
+  const category=Object.keys(data.budget.perPersonJPY)[1];
+  const app=boot({saved:{mode:'budget',rate:200,expenses:[{id:'old',amount:600,category,date:data.days[0].date,note:'旧记录'}]}});
+  app.submit({amount:'1200',category,date:data.days[0].date,note:'早餐',payer:' 小王 '});
+  app.submit({amount:'800',category,date:data.days[0].date,note:'咖啡',payer:'小王'});
+  app.submit({amount:'500',category,date:data.days[0].date,note:'甜品',payer:'=SUM(1,2) "<客人>"'});
+  assert.deepEqual(plain(app.context.TripApp.payerTotals()),[{payer:'',amount:600},{payer:'小王',amount:2000},{payer:'=SUM(1,2) "<客人>"',amount:500}]);
+  assert.match(app.get('page-budget').innerHTML,/&lt;客人&gt;/);
+  assert.doesNotMatch(app.get('page-budget').innerHTML,/<客人>/);
+  assert.equal(app.saved().expenses[0].payer,undefined);
+  app.click({mode:'lux'});
+  const refreshed=boot({saved:app.local.get(storageKey)});
+  assert.deepEqual(plain(refreshed.context.TripApp.payerTotals()),plain(app.context.TripApp.payerTotals()));
+  refreshed.click({action:'export-csv'});
+  const csv=await refreshed.blobs[0].text();
+  assert.match(csv,/"谁付的","人民币约数"/);
+  assert.ok(csv.includes('"\'=SUM(1,2) ""<客人>"""'));
+  assert.match(csv,/"旧记录",""/);
+  refreshed.click({deleteExpense:refreshed.saved().expenses[1].id});
+  assert.equal(refreshed.context.TripApp.payerTotals().find(row=>row.payer==='小王').amount,800);
 });
 
 console.log(`\n${passed} passed; ${failed} failed.`);

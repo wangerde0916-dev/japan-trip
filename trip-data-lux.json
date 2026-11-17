@@ -1,0 +1,2579 @@
+{
+  "meta": {
+    "title": "日本冬季 14 天豪华游：东京 · 富士山 · 京都 · 奈良 · 大阪 · 札幌",
+    "startDate": "2027-01-26",
+    "endDate": "2027-02-08",
+    "travelers": "2 人（1 人从美国出发、1 人从中国出发，东京会合）",
+    "style": "豪华版（五星酒店 / 全客房带私汤的温泉旅馆，米其林级餐厅，新干线绿色车厢）",
+    "currency": "JPY",
+    "route": [
+      "东京 4晚",
+      "河口湖私汤旅馆 1晚",
+      "京都 3晚",
+      "大阪 1晚",
+      "札幌 3晚",
+      "奥定山溪温泉旅馆 1晚"
+    ],
+    "flightsNote": "美国出发：去程飞东京，回程从札幌新千岁经东京/首尔/台北转机。中国出发：去程直飞东京，回程从新千岁直飞回国（注意 2027 春节 2/6 前后是高峰）。国内段大阪 KIX → 札幌 CTS。",
+    "disclaimer": "价格为估算区间（日元/人，按 2 人同住计）。高级餐厅普遍要提前 1–2 个月预约，很多只能通过酒店礼宾或预约平台订。标记 verify:true 的出发前在官网核实。",
+    "ratingsNote": "美食评分来自 Google 地图，截取于 2026-11-16，仅供参考；营业时间和休息日出发前再确认。",
+    "currencyRates": {
+      "jpyPerUsd": 157,
+      "jpyPerCny": 23.2,
+      "asOf": "2026-11-16",
+      "note": "汇率为 2026-11 参考值，App 里可以手动改"
+    }
+  },
+  "days": [
+    {
+      "day": 1,
+      "date": "2027-01-26",
+      "weekday": "周二",
+      "city": "东京",
+      "stay": "丸之内 / 大手町五星酒店（如星のや東京，双人房 ¥80,000–150,000/晚）",
+      "theme": "抵达 · 浅草夜景",
+      "items": [
+        {
+          "time": "下午",
+          "type": "transport",
+          "title": "机场 → 酒店：包车或出租车",
+          "note": "羽田约 ¥8,000–12,000",
+          "mapQuery": "Haneda Airport",
+          "costJPY": [
+            4000,
+            6000
+          ],
+          "verify": true
+        },
+        {
+          "time": "傍晚",
+          "type": "stay",
+          "title": "入住星のや東京（或同级酒店）",
+          "note": "日式塔楼旅馆，顶楼有天然温泉；2 人同住每人每晚约 ¥40,000–75,000",
+          "mapQuery": "HOSHINOYA Tokyo",
+          "costJPY": [
+            40000,
+            75000
+          ],
+          "verify": true
+        },
+        {
+          "time": "晚上",
+          "type": "sight",
+          "title": "浅草寺 & 雷门夜景",
+          "titleJa": "浅草寺",
+          "note": "夜里游客少，灯光好拍，免费",
+          "mapQuery": "Senso-ji Asakusa",
+          "costJPY": [
+            0,
+            0
+          ],
+          "verify": false
+        },
+        {
+          "time": "晚餐",
+          "type": "food",
+          "title": "酒店内餐厅",
+          "note": "第一天倒时差，在酒店吃",
+          "mapQuery": "HOSHINOYA Tokyo",
+          "costJPY": [
+            10000,
+            20000
+          ],
+          "verify": false
+        }
+      ],
+      "tips": [
+        "倒时差：当天别排太满，早点睡"
+      ],
+      "cityKey": "tokyo"
+    },
+    {
+      "day": 2,
+      "date": "2027-01-27",
+      "weekday": "周三",
+      "city": "东京",
+      "stay": "丸之内 / 大手町五星酒店（如星のや東京，双人房 ¥80,000–150,000/晚）",
+      "theme": "上野 · 秋叶原 · 东京站",
+      "items": [
+        {
+          "time": "早上",
+          "type": "food",
+          "title": "筑地场外市场吃寿司早餐",
+          "note": "Sushi Dai 主厨精选约 ¥4,200；或 Unitora",
+          "mapQuery": "Tsukiji Sushi Dai Honkan",
+          "costJPY": [
+            3000,
+            6000
+          ],
+          "verify": true
+        },
+        {
+          "time": "上午",
+          "type": "sight",
+          "title": "上野公园 & 阿美横丁",
+          "titleJa": "アメ横",
+          "note": "阿美横丁有便宜海鲜丼和小吃",
+          "mapQuery": "Ameyoko Ueno",
+          "costJPY": [
+            0,
+            1500
+          ],
+          "verify": false
+        },
+        {
+          "time": "下午",
+          "type": "sight",
+          "title": "秋叶原",
+          "titleJa": "秋葉原",
+          "note": "动漫、电器、扭蛋",
+          "mapQuery": "Akihabara",
+          "costJPY": [
+            0,
+            3000
+          ],
+          "verify": false
+        },
+        {
+          "time": "傍晚",
+          "type": "sight",
+          "title": "东京站丸之内 & KITTE 屋顶花园",
+          "note": "免费看东京站全景",
+          "mapQuery": "KITTE Marunouchi garden",
+          "costJPY": [
+            0,
+            0
+          ],
+          "verify": false
+        },
+        {
+          "time": "晚餐",
+          "type": "food",
+          "title": "东京站一番街拉面街",
+          "mapQuery": "Tokyo Ramen Street",
+          "costJPY": [
+            1000,
+            1500
+          ],
+          "verify": false
+        },
+        {
+          "time": "下午",
+          "type": "food",
+          "title": "宝格丽酒店 40 楼下午茶",
+          "note": "东京站旁，必须预约",
+          "mapQuery": "Bvlgari Lounge Tokyo",
+          "costJPY": [
+            10000,
+            15000
+          ],
+          "verify": true,
+          "titleJa": "ブルガリ ラウンジ"
+        }
+      ],
+      "tips": [
+        "东京市内基本坐地铁，可以考虑买 Tokyo Subway Ticket（24/48/72 小时），出发前查价格"
+      ],
+      "cityKey": "tokyo"
+    },
+    {
+      "day": 3,
+      "date": "2027-01-28",
+      "weekday": "周四",
+      "city": "东京",
+      "stay": "丸之内 / 大手町五星酒店（如星のや東京，双人房 ¥80,000–150,000/晚）",
+      "theme": "原宿 · 涩谷 · 新宿",
+      "items": [
+        {
+          "time": "上午",
+          "type": "sight",
+          "title": "明治神宫",
+          "titleJa": "明治神宮",
+          "note": "免费，早上人少",
+          "mapQuery": "Meiji Jingu",
+          "costJPY": [
+            0,
+            0
+          ],
+          "verify": false
+        },
+        {
+          "time": "中午",
+          "type": "sight",
+          "title": "原宿竹下通 & 表参道",
+          "mapQuery": "Takeshita Street",
+          "costJPY": [
+            0,
+            1000
+          ],
+          "verify": false
+        },
+        {
+          "time": "下午",
+          "type": "sight",
+          "title": "涩谷十字路口 + SHIBUYA SKY 观景台",
+          "note": "日落前一小时入场最好，提前网上订票",
+          "mapQuery": "SHIBUYA SKY",
+          "costJPY": [
+            2500,
+            3500
+          ],
+          "verify": true,
+          "titleJa": "渋谷スカイ"
+        },
+        {
+          "time": "傍晚",
+          "type": "sight",
+          "title": "东京都厅展望台（免费夜景）",
+          "titleJa": "東京都庁展望室",
+          "note": "免费观景台，天气好能看到富士山剪影；开放时间出发前查",
+          "mapQuery": "Tokyo Metropolitan Government Building observation deck",
+          "costJPY": [
+            0,
+            0
+          ],
+          "verify": true
+        },
+        {
+          "time": "晚餐",
+          "type": "food",
+          "title": "银座寿司 Omakase：鮨 いし山",
+          "note": "米其林级，必须提前 1–2 个月预约；周日周一休息，D3 是周四",
+          "mapQuery": "Sushi Ishiyama Ginza",
+          "costJPY": [
+            30000,
+            45000
+          ],
+          "verify": true
+        }
+      ],
+      "tips": [],
+      "cityKey": "tokyo"
+    },
+    {
+      "day": 4,
+      "date": "2027-01-29",
+      "weekday": "周五",
+      "city": "东京",
+      "stay": "丸之内 / 大手町五星酒店（如星のや東京，双人房 ¥80,000–150,000/晚）",
+      "theme": "镰仓一日游（或筑地 + 台场）",
+      "items": [
+        {
+          "time": "上午",
+          "type": "transport",
+          "title": "JR 去镰仓",
+          "note": "约 1 小时",
+          "mapQuery": "Kamakura Station",
+          "costJPY": [
+            900,
+            1000
+          ],
+          "verify": true
+        },
+        {
+          "time": "上午",
+          "type": "sight",
+          "title": "镰仓大佛 & 长谷寺",
+          "titleJa": "鎌倉大仏",
+          "mapQuery": "Kotoku-in Kamakura",
+          "costJPY": [
+            300,
+            700
+          ],
+          "verify": true
+        },
+        {
+          "time": "下午",
+          "type": "sight",
+          "title": "江之电 & 镰仓高校前（灌篮高手道口）",
+          "mapQuery": "Kamakurakokomae Station",
+          "costJPY": [
+            300,
+            800
+          ],
+          "verify": false
+        },
+        {
+          "time": "晚上",
+          "type": "food",
+          "title": "回东京，酒店餐厅或银座和牛烧肉",
+          "note": "",
+          "mapQuery": "Ginza yakiniku",
+          "costJPY": [
+            10000,
+            20000
+          ],
+          "verify": false
+        }
+      ],
+      "tips": [
+        "备选：不想跑远就去筑地场外市场 + 银座 + 台场"
+      ],
+      "cityKey": "tokyo"
+    },
+    {
+      "day": 5,
+      "date": "2027-01-30",
+      "weekday": "周六",
+      "city": "河口湖（富士山）",
+      "stay": "ふふ 河口湖（全客房带私人露天温泉，含晚餐 + 早餐）",
+      "theme": "冬天看富士山的最佳季节",
+      "items": [
+        {
+          "time": "上午",
+          "type": "transport",
+          "title": "新宿 → 河口湖：特急「富士回游」",
+          "note": "约 2 小时，对号座",
+          "mapQuery": "Shinjuku Station",
+          "costJPY": [
+            4000,
+            4600
+          ],
+          "verify": true
+        },
+        {
+          "time": "中午",
+          "type": "sight",
+          "title": "新仓山浅间公园（五重塔 + 富士山）",
+          "titleJa": "新倉山浅間公園",
+          "note": "要爬约 400 级台阶，冬天晴天多、富士山最清楚",
+          "mapQuery": "Chureito Pagoda",
+          "costJPY": [
+            0,
+            0
+          ],
+          "verify": false
+        },
+        {
+          "time": "下午",
+          "type": "sight",
+          "title": "河口湖大石公园湖边",
+          "mapQuery": "Oishi Park Kawaguchiko",
+          "costJPY": [
+            0,
+            0
+          ],
+          "verify": false
+        },
+        {
+          "time": "晚餐",
+          "type": "food",
+          "title": "旅馆怀石晚餐",
+          "note": "含在房费里",
+          "mapQuery": "Kawaguchiko",
+          "costJPY": [
+            0,
+            0
+          ],
+          "verify": false
+        },
+        {
+          "time": "傍晚",
+          "type": "stay",
+          "title": "入住 ふふ 河口湖",
+          "note": "每间房都有私人露天温泉，含怀石晚餐和早餐",
+          "mapQuery": "FuFu Kawaguchiko",
+          "costJPY": [
+            60000,
+            100000
+          ],
+          "verify": true
+        }
+      ],
+      "tips": [
+        "冬季富士山五合目道路封闭，不要计划上山",
+        "河口湖早晚零下，要带好保暖",
+        "温泉旅馆泡汤一般要全裸，有纹身可能不能进公共浴池，可以订带私汤的房间"
+      ],
+      "cityKey": "kawaguchiko"
+    },
+    {
+      "day": 6,
+      "date": "2027-01-31",
+      "weekday": "周日",
+      "city": "京都",
+      "stay": "东山五星酒店（四季酒店 / 悦榕庄东山，双人房 ¥100,000–180,000/晚）",
+      "theme": "移动日 · 祇园夜游",
+      "items": [
+        {
+          "time": "上午",
+          "type": "sight",
+          "title": "早上再看一次富士山（清晨最清楚）",
+          "mapQuery": "Lake Kawaguchi",
+          "costJPY": [
+            0,
+            0
+          ],
+          "verify": false
+        },
+        {
+          "time": "中午",
+          "type": "transport",
+          "title": "河口湖 → 三岛（包车）→ 新干线绿色车厢到京都",
+          "note": "包车省去换乘，绿色车厢座位更宽",
+          "mapQuery": "Mishima Station",
+          "costJPY": [
+            20000,
+            30000
+          ],
+          "verify": true
+        },
+        {
+          "time": "傍晚",
+          "type": "sight",
+          "title": "祇园花见小路 & 八坂神社",
+          "titleJa": "花見小路",
+          "note": "免费；不要拍照骚扰艺伎，有些私道禁止拍照",
+          "mapQuery": "Hanamikoji Street",
+          "costJPY": [
+            0,
+            0
+          ],
+          "verify": false
+        },
+        {
+          "time": "晚餐",
+          "type": "food",
+          "title": "米其林怀石：菊乃井 本店",
+          "note": "京都老牌怀石，必须预约",
+          "mapQuery": "Kikunoi Honten",
+          "costJPY": [
+            35000,
+            55000
+          ],
+          "verify": true,
+          "titleJa": "菊乃井"
+        }
+      ],
+      "tips": [
+        "这一天车费最贵，是整趟交通的大头"
+      ],
+      "cityKey": "kyoto"
+    },
+    {
+      "day": 7,
+      "date": "2027-02-01",
+      "weekday": "周一",
+      "city": "京都",
+      "stay": "东山五星酒店（四季酒店 / 悦榕庄东山，双人房 ¥100,000–180,000/晚）",
+      "theme": "伏见稻荷 · 清水寺",
+      "items": [
+        {
+          "time": "清晨",
+          "type": "sight",
+          "title": "伏见稻荷大社（千本鸟居）",
+          "titleJa": "伏見稲荷大社",
+          "note": "免费，24 小时开放，8 点前去人少",
+          "mapQuery": "Fushimi Inari Taisha",
+          "costJPY": [
+            0,
+            0
+          ],
+          "verify": false
+        },
+        {
+          "time": "上午",
+          "type": "sight",
+          "title": "和服租赁 + 清水寺一带拍照",
+          "note": "含发型约 ¥5,000–9,000，提前网上预约",
+          "mapQuery": "Kiyomizu kimono rental",
+          "costJPY": [
+            5000,
+            9000
+          ],
+          "verify": true
+        },
+        {
+          "time": "上午",
+          "type": "sight",
+          "title": "清水寺",
+          "titleJa": "清水寺",
+          "mapQuery": "Kiyomizu-dera",
+          "costJPY": [
+            400,
+            500
+          ],
+          "verify": true
+        },
+        {
+          "time": "下午",
+          "type": "sight",
+          "title": "二年坂 · 三年坂 · 八坂塔",
+          "mapQuery": "Ninenzaka",
+          "costJPY": [
+            0,
+            1000
+          ],
+          "verify": false
+        },
+        {
+          "time": "晚餐",
+          "type": "food",
+          "title": "先斗町川床餐厅",
+          "note": "沿鸭川的小巷，建议预约",
+          "mapQuery": "Pontocho Kyoto",
+          "costJPY": [
+            8000,
+            15000
+          ],
+          "verify": false
+        },
+        {
+          "time": "下午",
+          "type": "food",
+          "title": "FAUCHON 京都下午茶",
+          "note": "FAUCHON 酒店 10 楼，必须预约",
+          "mapQuery": "Fauchon Salon de The Kyoto",
+          "costJPY": [
+            7000,
+            7500
+          ],
+          "verify": true
+        }
+      ],
+      "tips": [
+        "京都市内建议坐地铁 + 步行，公交很挤"
+      ],
+      "cityKey": "kyoto"
+    },
+    {
+      "day": 8,
+      "date": "2027-02-02",
+      "weekday": "周二",
+      "city": "京都",
+      "stay": "东山五星酒店（四季酒店 / 悦榕庄东山，双人房 ¥100,000–180,000/晚）",
+      "theme": "岚山 · 金阁寺",
+      "items": [
+        {
+          "time": "清晨",
+          "type": "sight",
+          "title": "岚山竹林小径",
+          "titleJa": "竹林の小径",
+          "note": "免费，越早越好",
+          "mapQuery": "Arashiyama Bamboo Grove",
+          "costJPY": [
+            0,
+            0
+          ],
+          "verify": false
+        },
+        {
+          "time": "上午",
+          "type": "sight",
+          "title": "渡月桥 & 天龙寺",
+          "mapQuery": "Togetsukyo Bridge",
+          "costJPY": [
+            0,
+            800
+          ],
+          "verify": true
+        },
+        {
+          "time": "下午",
+          "type": "sight",
+          "title": "金阁寺",
+          "titleJa": "金閣寺",
+          "note": "如果下雪，雪中金阁是名景",
+          "mapQuery": "Kinkaku-ji",
+          "costJPY": [
+            500,
+            500
+          ],
+          "verify": true
+        },
+        {
+          "time": "中午",
+          "type": "food",
+          "title": "岚山汤豆腐套餐（ゆどうふ嵯峨野）",
+          "note": "庭院老宅里吃，约 ¥4,400",
+          "mapQuery": "Yudofu Sagano",
+          "costJPY": [
+            4400,
+            5000
+          ],
+          "verify": true,
+          "titleJa": "湯豆腐"
+        },
+        {
+          "time": "晚上",
+          "type": "food",
+          "title": "料理人 じき 宮ざわ",
+          "note": "米其林一星，必须预约；周三休息，D8 是周二",
+          "mapQuery": "Jiki Miyazawa Kyoto",
+          "costJPY": [
+            20000,
+            30000
+          ],
+          "verify": true
+        }
+      ],
+      "tips": [],
+      "cityKey": "kyoto"
+    },
+    {
+      "day": 9,
+      "date": "2027-02-03",
+      "weekday": "周三",
+      "city": "奈良 → 大阪",
+      "stay": "梅田五星酒店（华尔道夫 / 大阪站酒店，双人房 ¥80,000–140,000/晚）",
+      "theme": "奈良一日游 · 节分万灯笼",
+      "items": [
+        {
+          "time": "上午",
+          "type": "transport",
+          "title": "退房，近铁去奈良，行李放投币柜",
+          "mapQuery": "Kintetsu Nara Station",
+          "costJPY": [
+            800,
+            1500
+          ],
+          "verify": true
+        },
+        {
+          "time": "上午",
+          "type": "sight",
+          "title": "奈良公园喂鹿 & 东大寺",
+          "titleJa": "東大寺",
+          "note": "鹿饼约 200 日元",
+          "mapQuery": "Todai-ji",
+          "costJPY": [
+            800,
+            1000
+          ],
+          "verify": true
+        },
+        {
+          "time": "傍晚",
+          "type": "sight",
+          "title": "春日大社「节分万灯笼」",
+          "titleJa": "節分万燈籠",
+          "note": "节分夜点亮全部约 3000 盏灯笼，一年只有两次，日期和时间出发前务必核实",
+          "mapQuery": "Kasuga Taisha",
+          "costJPY": [
+            0,
+            1000
+          ],
+          "verify": true
+        },
+        {
+          "time": "晚上",
+          "type": "transport",
+          "title": "近铁去大阪难波，入住",
+          "mapQuery": "Osaka Namba Station",
+          "costJPY": [
+            700,
+            700
+          ],
+          "verify": true
+        },
+        {
+          "time": "晚餐",
+          "type": "food",
+          "title": "神户牛铁板烧 和の宮 道顿堀本店",
+          "note": "Google 4.8 分",
+          "mapQuery": "Kobe Beef WANOMIYA Dotonbori",
+          "costJPY": [
+            20000,
+            40000
+          ],
+          "verify": true
+        }
+      ],
+      "tips": [
+        "2 月 3 日是节分，京都吉田神社等也有活动"
+      ],
+      "cityKey": "nara",
+      "extraCityKeys": [
+        "osaka"
+      ]
+    },
+    {
+      "day": 10,
+      "date": "2027-02-04",
+      "weekday": "周四",
+      "city": "大阪 → 札幌",
+      "stay": "JR 塔日航酒店札幌（札幌站直连，雪祭期间双人房 ¥60,000–100,000/晚）",
+      "theme": "道顿堀早午餐 · 飞北海道 · 雪祭开幕夜",
+      "items": [
+        {
+          "time": "上午",
+          "type": "food",
+          "title": "黑门市场 / 道顿堀章鱼烧",
+          "titleJa": "黒門市場",
+          "mapQuery": "Kuromon Market",
+          "costJPY": [
+            1000,
+            2500
+          ],
+          "verify": false
+        },
+        {
+          "time": "中午",
+          "type": "transport",
+          "title": "南海特急 Rapi:t → 关西机场",
+          "note": "对号座，比普通车舒服",
+          "mapQuery": "Kansai International Airport",
+          "costJPY": [
+            1500,
+            1600
+          ],
+          "verify": true
+        },
+        {
+          "time": "下午",
+          "type": "transport",
+          "title": "ANA / JAL 飞新千岁（Premium Class）",
+          "note": "",
+          "mapQuery": "New Chitose Airport",
+          "costJPY": [
+            30000,
+            50000
+          ],
+          "verify": true
+        },
+        {
+          "time": "傍晚",
+          "type": "transport",
+          "title": "机场 → 札幌：包车或 JR 快速（u 座位指定席）",
+          "note": "",
+          "mapQuery": "Sapporo Station",
+          "costJPY": [
+            1900,
+            15000
+          ],
+          "verify": true
+        },
+        {
+          "time": "晚上",
+          "type": "sight",
+          "title": "札幌雪祭大通会场夜间点灯（开幕日）",
+          "titleJa": "さっぽろ雪まつり",
+          "note": "2027 年 2/4–2/11；大通会场点灯到 22:00",
+          "mapQuery": "Odori Park Sapporo",
+          "costJPY": [
+            0,
+            0
+          ],
+          "verify": false
+        }
+      ],
+      "tips": [
+        "雪祭期间札幌住宿很紧张，越早订越好"
+      ],
+      "cityKey": "osaka"
+    },
+    {
+      "day": 11,
+      "date": "2027-02-05",
+      "weekday": "周五",
+      "city": "札幌",
+      "stay": "札幌",
+      "theme": "雪祭三会场",
+      "items": [
+        {
+          "time": "上午",
+          "type": "sight",
+          "title": "二条市场早餐（海鲜丼）",
+          "titleJa": "二条市場",
+          "mapQuery": "Nijo Market Sapporo",
+          "costJPY": [
+            1500,
+            3500
+          ],
+          "verify": false
+        },
+        {
+          "time": "上午",
+          "type": "sight",
+          "title": "大通会场白天大雪像 & 札幌电视塔",
+          "mapQuery": "Sapporo TV Tower",
+          "costJPY": [
+            0,
+            1000
+          ],
+          "verify": true
+        },
+        {
+          "time": "下午",
+          "type": "sight",
+          "title": "つどーむ会场（雪滑梯等体验）",
+          "note": "10:00–16:00，从地铁荣町站坐接驳巴士",
+          "mapQuery": "Tsudome Sapporo",
+          "costJPY": [
+            0,
+            500
+          ],
+          "verify": false
+        },
+        {
+          "time": "晚上",
+          "type": "sight",
+          "title": "薄野会场冰雕",
+          "titleJa": "すすきの会場",
+          "mapQuery": "Susukino Sapporo",
+          "costJPY": [
+            0,
+            0
+          ],
+          "verify": false
+        },
+        {
+          "time": "晚餐",
+          "type": "food",
+          "title": "鮨 寺田（札幌高级寿司）",
+          "note": "必须预约",
+          "mapQuery": "Sushi Terada Sapporo",
+          "costJPY": [
+            25000,
+            40000
+          ],
+          "verify": true
+        }
+      ],
+      "tips": [
+        "地面结冰很滑：鞋要防滑，或在当地便利店买鞋底防滑钉"
+      ],
+      "cityKey": "sapporo"
+    },
+    {
+      "day": 12,
+      "date": "2027-02-06",
+      "weekday": "周六",
+      "city": "小樽",
+      "stay": "札幌",
+      "theme": "小樽运河 · 雪灯之路",
+      "items": [
+        {
+          "time": "上午",
+          "type": "transport",
+          "title": "JR 札幌 → 小樽（约 40 分钟）",
+          "mapQuery": "Otaru Station",
+          "costJPY": [
+            750,
+            900
+          ],
+          "verify": true
+        },
+        {
+          "time": "上午",
+          "type": "sight",
+          "title": "堺町通 & 音乐盒堂 & 北一硝子",
+          "mapQuery": "Otaru Music Box Museum",
+          "costJPY": [
+            0,
+            1000
+          ],
+          "verify": false
+        },
+        {
+          "time": "中午",
+          "type": "food",
+          "title": "三角市场海鲜丼",
+          "mapQuery": "Sankaku Market Otaru",
+          "costJPY": [
+            2000,
+            3500
+          ],
+          "verify": false
+        },
+        {
+          "time": "傍晚",
+          "type": "sight",
+          "title": "小樽雪灯之路（运河会场 & 手宫线会场）",
+          "titleJa": "小樽雪あかりの路",
+          "note": "2027 年日期官方尚未公布；往年是 2 月上旬连续 8 天、17:00–21:00。如果还没开幕，就看运河夜景",
+          "mapQuery": "Otaru Canal",
+          "costJPY": [
+            0,
+            0
+          ],
+          "verify": true
+        },
+        {
+          "time": "晚上",
+          "type": "transport",
+          "title": "JR 回札幌",
+          "mapQuery": "Sapporo Station",
+          "costJPY": [
+            750,
+            900
+          ],
+          "verify": true
+        }
+      ],
+      "tips": [],
+      "cityKey": "otaru"
+    },
+    {
+      "day": 13,
+      "date": "2027-02-07",
+      "weekday": "周日",
+      "city": "定山溪",
+      "stay": "奥定山溪温泉 佳松御苑（含晚餐 + 早餐）",
+      "theme": "住进温泉乡 · 雪中泡汤",
+      "items": [
+        {
+          "time": "上午",
+          "type": "food",
+          "title": "札幌站根室花まる回转寿司",
+          "note": "先取号再去逛街，等位可能 1–2 小时",
+          "mapQuery": "Nemuro Hanamaru Sapporo Station",
+          "costJPY": [
+            2500,
+            4500
+          ],
+          "verify": true
+        },
+        {
+          "time": "下午",
+          "type": "transport",
+          "title": "札幌 → 奥定山溪：包车（约 1 小时）",
+          "note": "",
+          "mapQuery": "Oku Jozankei Onsen Kasho Gyoen",
+          "costJPY": [
+            8000,
+            12000
+          ],
+          "verify": true
+        },
+        {
+          "time": "傍晚",
+          "type": "stay",
+          "title": "入住奥定山溪温泉 佳松御苑",
+          "note": "建议从札幌包车过去",
+          "mapQuery": "Oku Jozankei Onsen Kasho Gyoen",
+          "costJPY": [
+            50000,
+            90000
+          ],
+          "verify": true
+        },
+        {
+          "time": "晚上",
+          "type": "food",
+          "title": "旅馆晚餐",
+          "note": "含在房费里",
+          "mapQuery": "Jozankei",
+          "costJPY": [
+            0,
+            0
+          ],
+          "verify": false
+        }
+      ],
+      "tips": [
+        "藻岩山夜景挪到 D11 或 D12 晚上去",
+        "旅馆里有浴衣，可以穿着去泡汤、吃饭"
+      ],
+      "cityKey": "sapporo"
+    },
+    {
+      "day": 14,
+      "date": "2027-02-08",
+      "weekday": "周一",
+      "city": "札幌 → 回程",
+      "stay": "-",
+      "theme": "买伴手礼 · 返程",
+      "items": [
+        {
+          "time": "上午",
+          "type": "food",
+          "title": "札幌站/大丸买伴手礼",
+          "note": "白色恋人、六花亭、ROYCE 生巧",
+          "mapQuery": "Daimaru Sapporo",
+          "costJPY": [
+            2000,
+            5000
+          ],
+          "verify": false
+        },
+        {
+          "time": "上午",
+          "type": "transport",
+          "title": "包车直接送新千岁机场",
+          "note": "约 1.5 小时",
+          "mapQuery": "New Chitose Airport",
+          "costJPY": [
+            15000,
+            25000
+          ],
+          "verify": true
+        }
+      ],
+      "tips": [
+        "冬季北海道航班常因暴雪延误，回程转机时间留宽一点"
+      ],
+      "cityKey": "sapporo"
+    }
+  ],
+  "budget": {
+    "perPersonJPY": {
+      "住宿（13 晚，2 人同住）": [
+        450000,
+        850000
+      ],
+      "餐饮（14 天）": [
+        200000,
+        350000
+      ],
+      "交通（不含国际机票）": [
+        90000,
+        130000
+      ],
+      "门票 & 体验": [
+        50000,
+        100000
+      ]
+    },
+    "note": "合计约 ¥790,000–1,430,000/人。大头是五星酒店和米其林餐厅；把其中两三晚换成舒适版酒店，可以省下二三十万。"
+  },
+  "checklist": [
+    {
+      "group": "证件",
+      "item": "日本签证：如持中国护照需办理。在美国可按所属领区向日本总领馆申请，至少提前 1 个月，材料以领馆官网为准",
+      "verify": true
+    },
+    {
+      "group": "证件",
+      "item": "留学生返美：I-20 上的 travel signature 是否在有效期内（找学校国际学生办公室签）",
+      "verify": true
+    },
+    {
+      "group": "证件",
+      "item": "Visit Japan Web 提前填写入境与海关信息",
+      "verify": true
+    },
+    {
+      "group": "预订",
+      "item": "国际机票（开口：去程飞东京，回程从札幌飞）",
+      "verify": false
+    },
+    {
+      "group": "预订",
+      "item": "札幌雪祭期间住宿（最紧张，优先订）",
+      "verify": false
+    },
+    {
+      "group": "预订",
+      "item": "高级餐厅（鮨いし山、菊乃井、じき宮ざわ、和の宮、鮨寺田）提前 1–2 个月预约，可请酒店礼宾帮订",
+      "verify": false
+    },
+    {
+      "group": "预订",
+      "item": "包车：河口湖→三岛、定山溪→新千岁",
+      "verify": false
+    },
+    {
+      "group": "预订",
+      "item": "河口湖、定山溪温泉旅馆（含两餐，越早订越好）",
+      "verify": false
+    },
+    {
+      "group": "预订",
+      "item": "新宿 → 河口湖 特急「富士回游」对号座",
+      "verify": false
+    },
+    {
+      "group": "预订",
+      "item": "KIX → CTS 廉航（含托运行李）",
+      "verify": false
+    },
+    {
+      "group": "预订",
+      "item": "新宿 → 河口湖高速巴士",
+      "verify": false
+    },
+    {
+      "group": "出行",
+      "item": "日本 eSIM 或随身 WiFi",
+      "verify": false
+    },
+    {
+      "group": "出行",
+      "item": "Suica（iPhone 钱包）/ 一张免外汇手续费的信用卡 + 少量现金",
+      "verify": false
+    },
+    {
+      "group": "出行",
+      "item": "旅行保险",
+      "verify": false
+    },
+    {
+      "group": "衣物",
+      "item": "札幌白天常在零下：羽绒服、保暖内衣、帽子手套、防滑靴",
+      "verify": false
+    },
+    {
+      "group": "衣物",
+      "item": "暖宝宝（日本便利店有卖，叫カイロ）",
+      "verify": false
+    },
+    {
+      "group": "中国出发的朋友",
+      "item": "日本单次旅游签证：只能通过日本使领馆指定旅行社办理，个人不能直接递交；单次签最长停留 15 天，14 天行程刚好够。至少提前 1 个月办",
+      "verify": true
+    },
+    {
+      "group": "中国出发的朋友",
+      "item": "签证费 2026-07-01 起单次涨到 ¥15,000（另加旅行社服务费）",
+      "verify": true
+    },
+    {
+      "group": "中国出发的朋友",
+      "item": "机票：去程飞东京（羽田/成田），回程从札幌新千岁直飞回国（北京、上海、广州等有航线）",
+      "verify": false
+    },
+    {
+      "group": "中国出发的朋友",
+      "item": "⚠️ 2027 年春节是 2 月 6 日，2/8 从札幌回国正好是春节高峰，机票会很贵，越早买越好",
+      "verify": true
+    },
+    {
+      "group": "中国出发的朋友",
+      "item": "支付：日本很多店能用支付宝/微信支付，但最好也带一张能在日本用的银联/Visa 卡和一些现金",
+      "verify": false
+    },
+    {
+      "group": "中国出发的朋友",
+      "item": "上网：国内手机号在日本漫游贵，建议买日本 eSIM；国内常用 App 在日本可以正常用",
+      "verify": false
+    },
+    {
+      "group": "中国出发的朋友",
+      "item": "会合：约好 1/26 在东京哪个机场/酒店碰头，两人航班号互相发一下",
+      "verify": false
+    }
+  ],
+  "phrases": [
+    {
+      "zh": "你好 / 打扰一下",
+      "ja": "すみません",
+      "romaji": "sumimasen"
+    },
+    {
+      "zh": "谢谢",
+      "ja": "ありがとうございます",
+      "romaji": "arigatou gozaimasu"
+    },
+    {
+      "zh": "这个多少钱？",
+      "ja": "これはいくらですか？",
+      "romaji": "kore wa ikura desu ka?"
+    },
+    {
+      "zh": "请给我这个",
+      "ja": "これをください",
+      "romaji": "kore o kudasai"
+    },
+    {
+      "zh": "可以刷卡吗？",
+      "ja": "カードで払えますか？",
+      "romaji": "kaado de haraemasu ka?"
+    },
+    {
+      "zh": "厕所在哪里？",
+      "ja": "トイレはどこですか？",
+      "romaji": "toire wa doko desu ka?"
+    },
+    {
+      "zh": "车站在哪里？",
+      "ja": "駅はどこですか？",
+      "romaji": "eki wa doko desu ka?"
+    },
+    {
+      "zh": "不需要袋子",
+      "ja": "袋はいりません",
+      "romaji": "fukuro wa irimasen"
+    }
+  ],
+  "emergency": [
+    {
+      "name": "报警",
+      "number": "110"
+    },
+    {
+      "name": "急救 / 火警",
+      "number": "119"
+    },
+    {
+      "name": "日本观光厅游客热线（Japan Visitor Hotline，多语种）",
+      "number": "050-3816-2787",
+      "verify": true
+    }
+  ],
+  "cities": [
+    {
+      "key": "tokyo",
+      "name": "东京",
+      "nights": "4 晚（D1–D4）",
+      "mustSee": [
+        "浅草寺 & 雷门",
+        "上野公园 & 阿美横丁",
+        "秋叶原",
+        "明治神宫",
+        "涩谷十字路口",
+        "东京都厅展望台（免费夜景）",
+        "镰仓大佛 & 镰仓高校前道口"
+      ],
+      "food": [
+        {
+          "name": "鮨 いし山（银座）",
+          "rating": 4.7,
+          "reviews": 352,
+          "dish": "寿司 Omakase",
+          "priceJPY": [
+            30000,
+            45000
+          ],
+          "note": "提前 1–2 个月预约",
+          "mapQuery": "Sushi Ishiyama Ginza",
+          "tier": "lux",
+          "closed": [
+            "周日",
+            "周一"
+          ]
+        },
+        {
+          "name": "星のや東京",
+          "rating": 4.4,
+          "reviews": 1167,
+          "dish": "住宿（顶楼温泉）",
+          "priceJPY": [
+            40000,
+            75000
+          ],
+          "note": "价格为 2 人同住每人每晚",
+          "mapQuery": "HOSHINOYA Tokyo",
+          "tier": "lux"
+        },
+        {
+          "name": "築地 寿司大 本館",
+          "rating": 4.4,
+          "reviews": 2584,
+          "dish": "主厨精选寿司",
+          "priceJPY": [
+            4200,
+            6000
+          ],
+          "note": "只有 10 个座位，早去",
+          "mapQuery": "Tsukiji Sushi Dai Honkan",
+          "tier": "plus"
+        },
+        {
+          "name": "すし処 うにとら",
+          "rating": 4.5,
+          "reviews": 1502,
+          "dish": "寿司、海胆",
+          "priceJPY": [
+            5000,
+            9000
+          ],
+          "note": "7:00 开门",
+          "mapQuery": "Sushidokoro Unitora Tsukiji",
+          "tier": "plus"
+        },
+        {
+          "name": "Asakusa Gyukatsu 浅草牛かつ",
+          "rating": 4.8,
+          "reviews": 13871,
+          "dish": "炸牛排（石板自煎）",
+          "priceJPY": [
+            2000,
+            3500
+          ],
+          "note": "雷门旁，客满可去附近分店",
+          "mapQuery": "Asakusa Gyukatsu"
+        },
+        {
+          "name": "京都勝牛 浅草橙通店",
+          "rating": 4.9,
+          "reviews": 6386,
+          "dish": "炸牛排套餐",
+          "priceJPY": [
+            2000,
+            3500
+          ],
+          "note": "10:30 开门，错开饭点",
+          "mapQuery": "GYUKATSU Kyoto Katsugyu Asakusa Orange Street"
+        },
+        {
+          "name": "天丼てんや 浅草店",
+          "rating": 4.1,
+          "reviews": 1993,
+          "dish": "天丼",
+          "priceJPY": [
+            700,
+            1200
+          ],
+          "note": "连锁店，穷游友好",
+          "mapQuery": "Tendon Tenya Asakusa"
+        },
+        {
+          "name": "風雲児 新宿",
+          "rating": 4.3,
+          "reviews": 5797,
+          "dish": "浓汤沾面",
+          "priceJPY": [
+            1000,
+            1500
+          ],
+          "note": "15:00–17:00 休息，排队走得快",
+          "mapQuery": "Fuunji Shinjuku"
+        },
+        {
+          "name": "Wagyu Ramen Goku 涩谷",
+          "rating": 4.8,
+          "reviews": 1964,
+          "dish": "和牛拉面",
+          "priceJPY": [
+            1500,
+            2500
+          ],
+          "note": "D3 逛涩谷时顺路",
+          "mapQuery": "Wagyu Ramen Goku Shibuya"
+        }
+      ],
+      "cafes": [
+        {
+          "category": "breakfast",
+          "name": "Cafe Tomorrow 浅草",
+          "rating": 4.3,
+          "reviews": 1497,
+          "dish": "日式早餐定食",
+          "priceJPY": [
+            600,
+            1200
+          ],
+          "note": "6:30 开门，早餐供应到 11:30，二楼位置少",
+          "mapQuery": "Cafe Tomorrow Asakusa",
+          "opens": "06:30"
+        },
+        {
+          "category": "breakfast",
+          "name": "Café Lapin 上野",
+          "rating": 4.6,
+          "reviews": 963,
+          "dish": "厚蛋三明治 + 手冲",
+          "priceJPY": [
+            1200,
+            2000
+          ],
+          "note": "开门前常排队",
+          "mapQuery": "Cafe Lapin Ueno",
+          "closed": [
+            "周日"
+          ],
+          "opens": "08:30"
+        },
+        {
+          "category": "breakfast",
+          "name": "NOOK. Açaí Bowl Cafe",
+          "rating": 4.8,
+          "reviews": 341,
+          "dish": "巴西莓碗、牛油果吐司",
+          "priceJPY": [
+            1500,
+            2500
+          ],
+          "note": "英文流利",
+          "mapQuery": "NOOK Acai Bowl Cafe Asakusa",
+          "opens": "08:00"
+        },
+        {
+          "category": "coffee",
+          "name": "Sedai Coffee and Roasters 原宿",
+          "rating": 4.8,
+          "reviews": 484,
+          "dish": "手冲单品",
+          "priceJPY": [
+            600,
+            1000
+          ],
+          "note": "店很小，只有长凳",
+          "mapQuery": "Sedai Coffee and Roasters"
+        },
+        {
+          "category": "coffee",
+          "name": "FEBRUARY COFFEE ROASTERY 浅草",
+          "rating": 4.7,
+          "reviews": 327,
+          "dish": "瑰夏手冲、焦糖布丁",
+          "priceJPY": [
+            700,
+            1500
+          ],
+          "note": "只有 8 个座位",
+          "mapQuery": "February Coffee Roastery Asakusa",
+          "closed": [
+            "周三"
+          ],
+          "opens": "08:30"
+        },
+        {
+          "category": "coffee",
+          "name": "a little place coffee 浅草",
+          "rating": 4.8,
+          "reviews": 265,
+          "dish": "拿铁、司康",
+          "priceJPY": [
+            600,
+            1200
+          ],
+          "note": "浅草寺北边，安静",
+          "mapQuery": "a little place coffee Asakusa",
+          "opens": "08:00"
+        },
+        {
+          "category": "tea",
+          "name": "幸福堂 Xing Fu Tang 原宿",
+          "rating": 3.9,
+          "reviews": 540,
+          "dish": "黑糖珍珠鲜奶",
+          "priceJPY": [
+            600,
+            900
+          ],
+          "note": "偏甜，不能调甜度",
+          "mapQuery": "Xing Fu Tang Harajuku"
+        },
+        {
+          "category": "tea",
+          "name": "KOI Thé 原宿",
+          "rating": 4.3,
+          "reviews": 162,
+          "dish": "黄金珍珠奶茶",
+          "priceJPY": [
+            500,
+            800
+          ],
+          "note": "以外带为主",
+          "mapQuery": "KOI The Harajuku"
+        },
+        {
+          "category": "cake",
+          "name": "Quil Fait Bon 银座",
+          "rating": 4.2,
+          "reviews": 1907,
+          "dish": "季节水果挞",
+          "priceJPY": [
+            900,
+            3000
+          ],
+          "note": "地下一层可以堂食",
+          "mapQuery": "Quil Fait Bon Ginza"
+        },
+        {
+          "category": "cake",
+          "name": "Henri Charpentier 银座本店",
+          "rating": 4.2,
+          "reviews": 1018,
+          "dish": "现做火焰可丽饼",
+          "priceJPY": [
+            1500,
+            3000
+          ],
+          "note": "常排队",
+          "mapQuery": "Henri Charpentier Ginza"
+        },
+        {
+          "category": "afternoon",
+          "name": "The Palace Lounge（皇宫酒店）",
+          "rating": 4.4,
+          "reviews": 477,
+          "dish": "栗子蒙布朗 + 茶",
+          "priceJPY": [
+            3000,
+            8000
+          ],
+          "note": "蛋糕套餐约 ¥3,000，下午茶要预约",
+          "mapQuery": "The Palace Lounge Tokyo"
+        },
+        {
+          "category": "afternoon",
+          "name": "Louange Tokyo Le Musée 银座",
+          "rating": 4.2,
+          "reviews": 519,
+          "dish": "艺术品造型下午茶",
+          "priceJPY": [
+            3500,
+            8000
+          ],
+          "note": "建议预约",
+          "mapQuery": "Louange Tokyo Le Musee"
+        },
+        {
+          "category": "afternoon",
+          "name": "The Bvlgari Lounge（宝格丽酒店 40 楼）",
+          "rating": 4.6,
+          "reviews": 120,
+          "dish": "宝格丽下午茶",
+          "priceJPY": [
+            10000,
+            15000
+          ],
+          "note": "东京站旁，必须预约",
+          "mapQuery": "Bvlgari Lounge Tokyo"
+        }
+      ]
+    },
+    {
+      "key": "kawaguchiko",
+      "name": "河口湖",
+      "nights": "1 晚（D5）",
+      "mustSee": [
+        "新仓山浅间公园（五重塔 + 富士山）",
+        "河口湖大石公园",
+        "清晨湖边看富士山"
+      ],
+      "food": [
+        {
+          "name": "ふふ 河口湖",
+          "rating": 4.5,
+          "reviews": 800,
+          "dish": "私汤客房 + 怀石",
+          "priceJPY": [
+            60000,
+            100000
+          ],
+          "note": "价格为每人每晚，含两餐",
+          "mapQuery": "FuFu Kawaguchiko",
+          "tier": "lux"
+        },
+        {
+          "name": "湖南荘（温泉旅馆）",
+          "rating": 4.7,
+          "reviews": 1668,
+          "dish": "旅馆怀石晚餐",
+          "priceJPY": [
+            25000,
+            45000
+          ],
+          "note": "住宿含两餐，价格为每人每晚",
+          "mapQuery": "Fuji Kawaguchiko Onsen Hotel Konansou",
+          "tier": "plus"
+        },
+        {
+          "name": "若草の宿 丸栄（温泉旅馆）",
+          "rating": 4.5,
+          "reviews": 757,
+          "dish": "房间内用餐的怀石",
+          "priceJPY": [
+            25000,
+            45000
+          ],
+          "note": "可选带私汤、正对富士山的房型",
+          "mapQuery": "Wakakusa no Yado Maruei",
+          "tier": "plus"
+        },
+        {
+          "name": "Hoto Tempura Wakana",
+          "rating": 4.6,
+          "reviews": 1043,
+          "dish": "馎饦面 + 天妇罗",
+          "priceJPY": [
+            1500,
+            2500
+          ],
+          "note": "评分最高",
+          "mapQuery": "Hoto Tempura Wakana Kawaguchiko",
+          "closed": [
+            "周二",
+            "周三"
+          ]
+        },
+        {
+          "name": "Kosaku 小作 河口湖店",
+          "rating": 4.2,
+          "reviews": 7000,
+          "dish": "馎饦面",
+          "priceJPY": [
+            1300,
+            2000
+          ],
+          "note": "老牌，评价最多",
+          "mapQuery": "Kosaku Kawaguchiko Hoto"
+        },
+        {
+          "name": "Hotokura Funari",
+          "rating": 4.2,
+          "reviews": 3699,
+          "dish": "馎饦面套餐",
+          "priceJPY": [
+            1500,
+            2500
+          ],
+          "note": "中午不休息，平板排号",
+          "mapQuery": "Hotokura Funari Kawaguchiko"
+        }
+      ],
+      "cafes": [
+        {
+          "category": "breakfast",
+          "name": "Kodachi Cafe",
+          "rating": 4.9,
+          "reviews": 349,
+          "dish": "吐司套餐、舒芙蕾松饼",
+          "priceJPY": [
+            1000,
+            2000
+          ],
+          "note": "窗口能看到富士山；常规周二、周三休息",
+          "mapQuery": "Kodachi Cafe Kawaguchiko",
+          "closed": [
+            "周二",
+            "周三"
+          ],
+          "opens": "07:00"
+        },
+        {
+          "category": "breakfast",
+          "name": "CAFETINO MT.FUJI",
+          "rating": 4.8,
+          "reviews": 775,
+          "dish": "厚松饼、燕麦拿铁",
+          "priceJPY": [
+            1200,
+            2000
+          ],
+          "note": "周五、周六休息，D6 周日早上可以去",
+          "mapQuery": "Cafetino Mt Fuji",
+          "closed": [
+            "周五",
+            "周六"
+          ],
+          "opens": "08:30"
+        },
+        {
+          "category": "breakfast",
+          "name": "enico.cafe&bar",
+          "rating": 4.4,
+          "reviews": 371,
+          "dish": "华夫饼、班尼迪克蛋",
+          "priceJPY": [
+            1200,
+            2200
+          ],
+          "note": "7:00 开门，屋顶能看富士山，离河口湖站近",
+          "mapQuery": "enico cafe Kawaguchiko",
+          "opens": "07:00"
+        },
+        {
+          "category": "coffee",
+          "name": "Fuji Cafe CUP'S",
+          "rating": 4.8,
+          "reviews": 2394,
+          "dish": "拿铁 + 富士山正面景观",
+          "priceJPY": [
+            600,
+            1500
+          ],
+          "note": "人多时出餐很慢",
+          "mapQuery": "Fuji Cafe CUPS Kawaguchiko"
+        }
+      ]
+    },
+    {
+      "key": "kyoto",
+      "name": "京都",
+      "nights": "3 晚（D6–D8）",
+      "mustSee": [
+        "伏见稻荷大社（早上 8 点前）",
+        "清水寺",
+        "二年坂 · 三年坂",
+        "祇园花见小路",
+        "岚山竹林 & 渡月桥",
+        "金阁寺"
+      ],
+      "food": [
+        {
+          "name": "菊乃井 本店",
+          "rating": 4.4,
+          "reviews": 986,
+          "dish": "米其林怀石",
+          "priceJPY": [
+            35000,
+            55000
+          ],
+          "note": "必须预约",
+          "mapQuery": "Kikunoi Honten",
+          "tier": "lux"
+        },
+        {
+          "name": "料理人 じき 宮ざわ",
+          "rating": 4.6,
+          "reviews": 336,
+          "dish": "米其林一星和食",
+          "priceJPY": [
+            20000,
+            30000
+          ],
+          "note": "必须预约",
+          "mapQuery": "Jiki Miyazawa",
+          "tier": "lux",
+          "closed": [
+            "周三"
+          ]
+        },
+        {
+          "name": "京都四季酒店",
+          "rating": 4.4,
+          "reviews": 1887,
+          "dish": "住宿（池泉庭园）",
+          "priceJPY": [
+            50000,
+            90000
+          ],
+          "note": "价格为 2 人同住每人每晚",
+          "mapQuery": "Four Seasons Hotel Kyoto",
+          "tier": "lux"
+        },
+        {
+          "name": "祇園 睦月",
+          "rating": 5.0,
+          "reviews": 219,
+          "dish": "怀石料理",
+          "priceJPY": [
+            11000,
+            17000
+          ],
+          "note": "必须预约；午餐只在周六日",
+          "mapQuery": "Gion Mutsuki",
+          "tier": "plus",
+          "closed": [
+            "周一"
+          ]
+        },
+        {
+          "name": "ゆどうふ 嵯峨野",
+          "rating": 4.3,
+          "reviews": 1250,
+          "dish": "汤豆腐套餐",
+          "priceJPY": [
+            4400,
+            5000
+          ],
+          "note": "庭院老宅",
+          "mapQuery": "Yudofu Sagano",
+          "tier": "plus"
+        },
+        {
+          "name": "京都かつ田 四条河原町",
+          "rating": 4.9,
+          "reviews": 7785,
+          "dish": "炸猪排/炸牛排套餐",
+          "priceJPY": [
+            2000,
+            3500
+          ],
+          "note": "米饭和咖喱免费续",
+          "mapQuery": "Kyoto Tonkatsu Katsuda Shijo Kawaramachi"
+        },
+        {
+          "name": "京都餃子 enen 祇园本店",
+          "rating": 4.9,
+          "reviews": 876,
+          "dish": "煎饺 + 居酒屋小菜",
+          "priceJPY": [
+            1500,
+            3000
+          ],
+          "note": "14:30–17:00 休息",
+          "mapQuery": "Kyoto Gyoza enen Gion"
+        },
+        {
+          "name": "祇園 とんかつ 和田福",
+          "rating": 4.7,
+          "reviews": 1419,
+          "dish": "炸猪排",
+          "priceJPY": [
+            2000,
+            3000
+          ],
+          "note": "祇园小巷里，20:00 关门",
+          "mapQuery": "Kyoto Gion Tonkatsu Wadafuku"
+        },
+        {
+          "name": "Nakashimaya",
+          "rating": 4.7,
+          "reviews": 1758,
+          "dish": "京都家常菜（おばんざい）",
+          "priceJPY": [
+            2000,
+            3500
+          ],
+          "note": "只营业晚上，可点半份，建议预约",
+          "mapQuery": "Nakashimaya Kyoto"
+        }
+      ],
+      "cafes": [
+        {
+          "category": "breakfast",
+          "name": "朝食 喜心 Kishin（祇园）",
+          "rating": 4.3,
+          "reviews": 460,
+          "dish": "日式朝食套餐",
+          "priceJPY": [
+            3600,
+            4500
+          ],
+          "note": "固定场次，建议预约",
+          "mapQuery": "Choshoku Kishin Kyoto",
+          "closed": [
+            "周三",
+            "周四"
+          ],
+          "opens": "07:30"
+        },
+        {
+          "category": "breakfast",
+          "name": "M&Maison 京都",
+          "rating": 4.6,
+          "reviews": 2616,
+          "dish": "烤鱼和风早餐",
+          "priceJPY": [
+            2000,
+            3000
+          ],
+          "note": "京都站附近",
+          "mapQuery": "M&Maison Kyoto",
+          "opens": "08:00"
+        },
+        {
+          "category": "breakfast",
+          "name": "Kacto（鸭川边）",
+          "rating": 4.5,
+          "reviews": 1494,
+          "dish": "松饼、鸡蛋金枪鱼三明治",
+          "priceJPY": [
+            1500,
+            2500
+          ],
+          "note": "鸭川河景，热门要等位",
+          "mapQuery": "Kacto Kyoto",
+          "opens": "08:00"
+        },
+        {
+          "category": "tea",
+          "name": "茶寮都路里 祇园本店",
+          "rating": 4.4,
+          "reviews": 2792,
+          "dish": "抹茶芭菲",
+          "priceJPY": [
+            1200,
+            2000
+          ],
+          "note": "老牌抹茶甜品",
+          "mapQuery": "Saryo Tsujiri Gion"
+        },
+        {
+          "category": "tea",
+          "name": "Maccha House 抹茶館 清水",
+          "rating": 4.3,
+          "reviews": 1145,
+          "dish": "抹茶提拉米苏",
+          "priceJPY": [
+            800,
+            1500
+          ],
+          "note": "每人至少点一份",
+          "mapQuery": "Maccha House Kiyomizu"
+        },
+        {
+          "category": "tea",
+          "name": "GOKAGO（清水寺附近）",
+          "rating": 4.5,
+          "reviews": 1045,
+          "dish": "浓厚宇治抹茶拿铁",
+          "priceJPY": [
+            800,
+            1300
+          ],
+          "note": "现场点茶，排队较快",
+          "mapQuery": "GOKAGO Kyoto"
+        },
+        {
+          "category": "coffee",
+          "name": "% ARABICA 岚山",
+          "rating": 4.2,
+          "reviews": 5843,
+          "dish": "拿铁 + 渡月桥河景",
+          "priceJPY": [
+            600,
+            900
+          ],
+          "note": "开门前就排队，基本只能外带",
+          "mapQuery": "Arabica Kyoto Arashiyama"
+        },
+        {
+          "category": "coffee",
+          "name": "eXcafe 京都岚山本店",
+          "rating": 4.6,
+          "reviews": 5099,
+          "dish": "自己烤团子套餐",
+          "priceJPY": [
+            1500,
+            2500
+          ],
+          "note": "庭院老宅",
+          "mapQuery": "eXcafe Kyoto Arashiyama"
+        },
+        {
+          "category": "afternoon",
+          "name": "FAUCHON Salon de Thé Kyoto",
+          "rating": 4.8,
+          "reviews": 208,
+          "dish": "季节主题下午茶",
+          "priceJPY": [
+            7000,
+            7500
+          ],
+          "note": "FAUCHON 酒店 10 楼，必须预约",
+          "mapQuery": "Fauchon Salon de The Kyoto"
+        }
+      ]
+    },
+    {
+      "key": "nara",
+      "name": "奈良",
+      "nights": "一日游（D9）",
+      "mustSee": [
+        "奈良公园喂鹿",
+        "东大寺大佛",
+        "春日大社节分万灯笼（2/3 晚）"
+      ],
+      "food": [
+        {
+          "name": "Maguro Koya まぐろ小屋",
+          "rating": 4.5,
+          "reviews": 1500,
+          "dish": "金枪鱼丼",
+          "priceJPY": [
+            1800,
+            3000
+          ],
+          "note": "近铁奈良站附近",
+          "mapQuery": "Maguro Koya Nara"
+        },
+        {
+          "name": "とんかつ がんこ 奈良",
+          "rating": 4.4,
+          "reviews": 2485,
+          "dish": "炸猪排套餐",
+          "priceJPY": [
+            1500,
+            2500
+          ],
+          "note": "卷心菜、味噌汤免费续",
+          "mapQuery": "Tonkatsu Ganko Nara"
+        },
+        {
+          "name": "水谷茶屋",
+          "rating": 4.7,
+          "reviews": 1307,
+          "dish": "乌冬、抹茶",
+          "priceJPY": [
+            900,
+            1500
+          ],
+          "note": "春日大社旁；2/3 是周三，这天休息",
+          "mapQuery": "Mizuya Chaya Nara",
+          "closed": [
+            "周二",
+            "周三"
+          ]
+        }
+      ],
+      "cafes": [
+        {
+          "category": "breakfast",
+          "name": "CHAMI Specialty Coffee",
+          "rating": 4.7,
+          "reviews": 1845,
+          "dish": "咖啡 + 法式布丁挞",
+          "priceJPY": [
+            800,
+            2000
+          ],
+          "note": "7:30 开门，近铁奈良站附近",
+          "mapQuery": "CHAMI Coffee Nara",
+          "opens": "07:30"
+        },
+        {
+          "category": "coffee",
+          "name": "Conce（奈良公园旁二楼）",
+          "rating": 4.8,
+          "reviews": 1323,
+          "dish": "抹茶拿铁、甜点",
+          "priceJPY": [
+            800,
+            2000
+          ],
+          "note": "窗边能看鹿",
+          "mapQuery": "Conce Nara",
+          "closed": [
+            "周二"
+          ]
+        },
+        {
+          "category": "cake",
+          "name": "Cafe Wakakusa",
+          "rating": 4.5,
+          "reviews": 341,
+          "dish": "水果可丽饼",
+          "priceJPY": [
+            1000,
+            1800
+          ],
+          "note": "老板很热情",
+          "mapQuery": "Cafe Wakakusa Nara",
+          "closed": [
+            "周一"
+          ]
+        },
+        {
+          "category": "cake",
+          "name": "ほうせき箱",
+          "rating": 4.3,
+          "reviews": 1401,
+          "dish": "抹茶开心果刨冰",
+          "priceJPY": [
+            1500,
+            2000
+          ],
+          "note": "只收现金；冬天也有刨冰",
+          "mapQuery": "Hosekibako Nara",
+          "closed": [
+            "周四"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "osaka",
+      "name": "大阪",
+      "nights": "1 晚（D9 晚–D10 上午）",
+      "mustSee": [
+        "道顿堀格力高招牌",
+        "黑门市场",
+        "通天阁 & 新世界"
+      ],
+      "food": [
+        {
+          "name": "神户牛 和の宮 道顿堀本店",
+          "rating": 4.8,
+          "reviews": 5310,
+          "dish": "神户牛铁板烧",
+          "priceJPY": [
+            20000,
+            40000
+          ],
+          "note": "",
+          "mapQuery": "Kobe Beef WANOMIYA Dotonbori",
+          "tier": "lux"
+        },
+        {
+          "name": "黒毛和牛焼肉 HARU",
+          "rating": 4.9,
+          "reviews": 1454,
+          "dish": "和牛烤肉放题",
+          "priceJPY": [
+            5800,
+            8000
+          ],
+          "note": "8 楼，从大楼里坐电梯上去",
+          "mapQuery": "Kuroge Wagyu Yakiniku HARU",
+          "tier": "plus"
+        },
+        {
+          "name": "焼肉力丸 难波道顿堀店",
+          "rating": 4.7,
+          "reviews": 5197,
+          "dish": "和牛放题",
+          "priceJPY": [
+            5000,
+            8000
+          ],
+          "note": "放题必须加点饮料",
+          "mapQuery": "Yakiniku Rikimaru Dotonbori",
+          "tier": "plus"
+        },
+        {
+          "name": "たこ焼道楽 わなか 千日前本店",
+          "rating": 4.3,
+          "reviews": 4509,
+          "dish": "章鱼烧拼盘",
+          "priceJPY": [
+            600,
+            1000
+          ],
+          "note": "只收现金",
+          "mapQuery": "Takoyaki Wanaka Sennichimae"
+        },
+        {
+          "name": "Bonkuraya+ 中座くいだおれ大楼店",
+          "rating": 4.7,
+          "reviews": 1057,
+          "dish": "大阪烧",
+          "priceJPY": [
+            1500,
+            2500
+          ],
+          "note": "座位多、开到很晚，适合 D9 晚上",
+          "mapQuery": "Bonkuraya Nakaza Kuidaore"
+        },
+        {
+          "name": "味乃家 本店",
+          "rating": 4.2,
+          "reviews": 4031,
+          "dish": "大阪烧",
+          "priceJPY": [
+            1500,
+            2500
+          ],
+          "note": "排队很久，不收信用卡",
+          "mapQuery": "Namba Okonomiyaki Ajinoya Honten",
+          "closed": [
+            "周一"
+          ]
+        },
+        {
+          "name": "新世界 串かつ 一徳 本店",
+          "rating": 4.5,
+          "reviews": 11379,
+          "dish": "炸串",
+          "priceJPY": [
+            1500,
+            2500
+          ],
+          "note": "顺路看通天阁",
+          "mapQuery": "Shinsekai Kushikatsu Ittoku"
+        }
+      ],
+      "cafes": [
+        {
+          "category": "breakfast",
+          "name": "UNREAL（道顿堀河边）",
+          "rating": 4.8,
+          "reviews": 1585,
+          "dish": "美式早餐、法式火腿芝士三明治",
+          "priceJPY": [
+            1500,
+            2500
+          ],
+          "note": "线上排队",
+          "mapQuery": "UNREAL Osaka",
+          "opens": "08:00"
+        },
+        {
+          "category": "breakfast",
+          "name": "Heumoot Cafe 难波",
+          "rating": 4.8,
+          "reviews": 549,
+          "dish": "早午餐、彩虹拉花",
+          "priceJPY": [
+            1500,
+            2500
+          ],
+          "note": "进店在名单上登记",
+          "mapQuery": "Heumoot Cafe Namba",
+          "opens": "08:00"
+        },
+        {
+          "category": "breakfast",
+          "name": "MAZE CAFE 难波",
+          "rating": 4.6,
+          "reviews": 630,
+          "dish": "班尼迪克蛋",
+          "priceJPY": [
+            1500,
+            2200
+          ],
+          "note": "7:00 开门，店小",
+          "mapQuery": "Maze Cafe Namba",
+          "opens": "07:00"
+        },
+        {
+          "category": "coffee",
+          "name": "LiLo Coffee Roasters",
+          "rating": 4.8,
+          "reviews": 2556,
+          "dish": "手冲（可选烘焙度）",
+          "priceJPY": [
+            600,
+            1200
+          ],
+          "note": "美国村边，店小",
+          "mapQuery": "LiLo Coffee Roasters"
+        },
+        {
+          "category": "coffee",
+          "name": "Barista Map Coffee Roasters",
+          "rating": 4.7,
+          "reviews": 570,
+          "dish": "草莓风味手冲",
+          "priceJPY": [
+            600,
+            1000
+          ],
+          "note": "",
+          "mapQuery": "Barista Map Coffee Osaka",
+          "closed": [
+            "周一"
+          ]
+        },
+        {
+          "category": "cake",
+          "name": "りくろーおじさんの店 难波本店",
+          "rating": 4.2,
+          "reviews": 5653,
+          "dish": "现烤日式芝士蛋糕（整个）",
+          "priceJPY": [
+            1000,
+            1300
+          ],
+          "note": "只卖整个，排队但很快",
+          "mapQuery": "Rikuro Namba"
+        },
+        {
+          "category": "cake",
+          "name": "PABLO 心斋桥",
+          "rating": 4.3,
+          "reviews": 1640,
+          "dish": "半熟芝士挞",
+          "priceJPY": [
+            300,
+            1500
+          ],
+          "note": "",
+          "mapQuery": "Cheese Tart Pablo Shinsaibashi"
+        }
+      ]
+    },
+    {
+      "key": "sapporo",
+      "name": "札幌",
+      "nights": "3 晚 + 定山溪 1 晚（D10–D14）",
+      "mustSee": [
+        "雪祭大通会场（白天 + 夜间点灯）",
+        "薄野会场冰雕",
+        "つどーむ会场雪滑梯",
+        "二条市场",
+        "藻岩山夜景",
+        "定山溪温泉（住一晚）"
+      ],
+      "food": [
+        {
+          "name": "鮨 寺田",
+          "rating": 4.8,
+          "reviews": 193,
+          "dish": "高级寿司",
+          "priceJPY": [
+            25000,
+            40000
+          ],
+          "note": "必须预约",
+          "mapQuery": "Sushi Terada Sapporo",
+          "tier": "lux"
+        },
+        {
+          "name": "奥定山溪温泉 佳松御苑",
+          "rating": 4.4,
+          "reviews": 482,
+          "dish": "温泉旅馆",
+          "priceJPY": [
+            50000,
+            90000
+          ],
+          "note": "价格为每人每晚，含两餐",
+          "mapQuery": "Oku Jozankei Onsen Kasho Gyoen",
+          "tier": "lux"
+        },
+        {
+          "name": "かに本家 札幌站前本店",
+          "rating": 4.1,
+          "reviews": 1812,
+          "dish": "螃蟹怀石",
+          "priceJPY": [
+            8000,
+            15000
+          ],
+          "note": "午餐套餐更划算",
+          "mapQuery": "Kani Honke Sapporo",
+          "tier": "plus"
+        },
+        {
+          "name": "根室花まる JR塔 Stellar Place 店",
+          "rating": 4.2,
+          "reviews": 4049,
+          "dish": "回转寿司",
+          "priceJPY": [
+            2500,
+            4500
+          ],
+          "note": "先取号，用 LINE 看排队进度",
+          "mapQuery": "Nemuro Hanamaru Stellar Place",
+          "tier": "plus"
+        },
+        {
+          "name": "トリトン 円山店",
+          "rating": 4.3,
+          "reviews": 4632,
+          "dish": "回转寿司",
+          "priceJPY": [
+            2500,
+            4500
+          ],
+          "note": "离市中心稍远，当地人排队",
+          "mapQuery": "Toriton Maruyama",
+          "tier": "plus"
+        },
+        {
+          "name": "ぬくもりの宿 ふる川（定山溪）",
+          "rating": 4.4,
+          "reviews": 1596,
+          "dish": "温泉旅馆晚餐",
+          "priceJPY": [
+            20000,
+            35000
+          ],
+          "note": "住宿含两餐，价格为每人每晚",
+          "mapQuery": "Nukumori no Yado Furukawa",
+          "tier": "plus"
+        },
+        {
+          "name": "札幌拉麺 はるか（元祖拉面横丁）",
+          "rating": 4.8,
+          "reviews": 4835,
+          "dish": "芝士味噌拉面",
+          "priceJPY": [
+            1100,
+            1600
+          ],
+          "note": "只有 9 个座位",
+          "mapQuery": "Sapporo Ramen Haruka"
+        },
+        {
+          "name": "らーめん信玄 南6条店",
+          "rating": 4.1,
+          "reviews": 7670,
+          "dish": "味噌拉面",
+          "priceJPY": [
+            1000,
+            1500
+          ],
+          "note": "开到凌晨 1 点，只收现金",
+          "mapQuery": "Ramen Shingen Minami 6 jo"
+        },
+        {
+          "name": "奥芝商店 実家",
+          "rating": 4.8,
+          "reviews": 7663,
+          "dish": "汤咖喱（选虾汤底）",
+          "priceJPY": [
+            1500,
+            2500
+          ],
+          "note": "",
+          "mapQuery": "Okushiba Shoten Sapporo",
+          "closed": [
+            "周一"
+          ]
+        },
+        {
+          "name": "Soup Curry GARAKU",
+          "rating": 4.3,
+          "reviews": 5447,
+          "dish": "汤咖喱",
+          "priceJPY": [
+            1500,
+            2500
+          ],
+          "note": "排队比较快",
+          "mapQuery": "Soup Curry GARAKU Sapporo"
+        },
+        {
+          "name": "成吉思汗 MASAJIN 薄野本店",
+          "rating": 4.9,
+          "reviews": 3246,
+          "dish": "成吉思汗烤羊肉",
+          "priceJPY": [
+            2500,
+            4000
+          ],
+          "note": "旁边还有一家分店，哪边人少去哪边",
+          "mapQuery": "Masajin Susukino"
+        }
+      ],
+      "cafes": [
+        {
+          "category": "breakfast",
+          "name": "NODE（KOKO HOTEL 1F）",
+          "rating": 4.6,
+          "reviews": 479,
+          "dish": "热三明治 + 手冲",
+          "priceJPY": [
+            1000,
+            1800
+          ],
+          "note": "8:00 开门",
+          "mapQuery": "NODE Sapporo",
+          "opens": "08:00"
+        },
+        {
+          "category": "coffee",
+          "name": "Mermaid Coffee Roasters",
+          "rating": 4.8,
+          "reviews": 1699,
+          "dish": "美瑛泽西牛奶拿铁",
+          "priceJPY": [
+            600,
+            1200
+          ],
+          "note": "有免费试饮",
+          "mapQuery": "Mermaid Coffee Roasters Sapporo",
+          "opens": "08:00"
+        },
+        {
+          "category": "coffee",
+          "name": "MARUMI COFFEE STAND",
+          "rating": 4.7,
+          "reviews": 524,
+          "dish": "北海道牛奶冰淇淋 + 手冲",
+          "priceJPY": [
+            500,
+            1000
+          ],
+          "note": "地下通道里，下雪天不用出门",
+          "mapQuery": "Marumi Coffee Stand Sitatte Sapporo",
+          "opens": "07:30"
+        },
+        {
+          "category": "cake",
+          "name": "パフェ、珈琲、酒、佐藤",
+          "rating": 4.2,
+          "reviews": 1967,
+          "dish": "夜芭菲（シメパフェ）",
+          "priceJPY": [
+            1500,
+            2500
+          ],
+          "note": "札幌特色：晚饭后吃芭菲；晚上排队",
+          "mapQuery": "Parfait coffee liquor Sato Sapporo"
+        },
+        {
+          "category": "cake",
+          "name": "パフェ専門店 NANAKAMADOU",
+          "rating": 4.3,
+          "reviews": 1065,
+          "dish": "季节芭菲",
+          "priceJPY": [
+            1800,
+            2800
+          ],
+          "note": "18:00 才开门，排队久",
+          "mapQuery": "Nanakamadou Sapporo"
+        }
+      ]
+    },
+    {
+      "key": "otaru",
+      "name": "小樽",
+      "nights": "一日游（D12）",
+      "mustSee": [
+        "小樽运河",
+        "堺町通 & 音乐盒堂 & 北一硝子",
+        "雪灯之路（2027 年日期待公布）"
+      ],
+      "food": [
+        {
+          "name": "海鮮人 小樽运河店",
+          "rating": 4.7,
+          "reviews": 119,
+          "dish": "海鲜丼",
+          "priceJPY": [
+            2500,
+            5000
+          ],
+          "note": "评价少，参考价值低一些",
+          "mapQuery": "Kaisennin Otaru Canal",
+          "closed": [
+            "周一",
+            "周四"
+          ]
+        },
+        {
+          "name": "どんぶり茶屋 小樽运河店",
+          "rating": 4.4,
+          "reviews": 527,
+          "dish": "海鲜丼",
+          "priceJPY": [
+            2500,
+            5000
+          ],
+          "note": "17:00 关门",
+          "mapQuery": "Donbei Otaru Canal"
+        },
+        {
+          "name": "滝波食堂（三角市场）",
+          "rating": 4.2,
+          "reviews": 3163,
+          "dish": "自选海鲜丼",
+          "priceJPY": [
+            2500,
+            5500
+          ],
+          "note": "7:00 开门，只收现金",
+          "mapQuery": "Takinami Shokudo Otaru"
+        }
+      ],
+      "cafes": [
+        {
+          "category": "cake",
+          "name": "LeTAO 本店",
+          "rating": 4.3,
+          "reviews": 3973,
+          "dish": "双层芝士蛋糕 + 茶",
+          "priceJPY": [
+            1200,
+            2500
+          ],
+          "note": "坐南小樽站下车走过去人少",
+          "mapQuery": "LeTAO Main Store Otaru"
+        },
+        {
+          "category": "cake",
+          "name": "LeTAO PATHOS",
+          "rating": 4.2,
+          "reviews": 2839,
+          "dish": "芝士蛋糕、蛋包饭",
+          "priceJPY": [
+            1200,
+            2500
+          ],
+          "note": "",
+          "mapQuery": "LeTAO Pathos Otaru"
+        },
+        {
+          "category": "cake",
+          "name": "六花亭 小樽运河店",
+          "rating": 4.3,
+          "reviews": 1777,
+          "dish": "葡萄干黄油夹心饼、二楼冰淇淋",
+          "priceJPY": [
+            300,
+            1000
+          ],
+          "note": "伴手礼",
+          "mapQuery": "Rokkatei Otaru"
+        }
+      ]
+    }
+  ],
+  "cafeCategories": {
+    "breakfast": "早餐",
+    "coffee": "咖啡",
+    "tea": "奶茶 / 抹茶",
+    "cake": "蛋糕甜品",
+    "afternoon": "下午茶"
+  }
+}
